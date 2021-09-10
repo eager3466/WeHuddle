@@ -1,7 +1,8 @@
 {
   "pages":[
     "pages/index/index",
-    "pages/team/team"
+    "pages/team/team",
+    "pages/me/me"
   ],
   "window":{
     "backgroundTextStyle":"light",

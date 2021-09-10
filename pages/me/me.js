@@ -5,7 +5,7 @@ Page({
      * 页面的初始数据
      */
     data: {
-
+        PageCur: 'basics',
     },
 
     /**
@@ -26,7 +26,7 @@ Page({
      * 生命周期函数--监听页面显示
      */
     onShow: function () {
-        
+
     },
 
     /**
@@ -62,23 +62,5 @@ Page({
      */
     onShareAppMessage: function () {
 
-    },
-    // 点击活动
-    activity: function () {
-        wx.redirectTo({
-            url: '/pages/index/index',
-        })
-    },
-    // 点击抱团
-    team: function () {
-        wx.redirectTo({
-            url: '/pages/team/team',
-        })
-    },
-    //点击我的
-    me: function () {
-        wx.redirectTo({
-            url: '/pages/me/me',
-        })
-    },
+    }
 })

@@ -48,23 +48,23 @@
 </view>
 <!-- 底部栏 -->
 <view class="cu-bar tabbar bg-white shadow foot">
-  <view class="action">
-    <view class="cuIcon-cu-image">
-      <image src="/images/tabbar/basics_cur.png"></image>
+    <view class="action">
+        <view class="cuIcon-cu-image" bindtap="activity">
+            <image src="/images/tabbar/basics_cur.png"></image>
+        </view>
+        <view class="text-green">活动</view>
     </view>
-    <view class="text-green">活动</view>
-  </view>
-  <view class="action" bindtap="team">
-    <view class="cuIcon-cu-image">
-      <image src="/images/tabbar/component.png"></image>
+    <view class="action" bindtap="team">
+        <view class="cuIcon-cu-image">
+            <image src="/images/tabbar/component.png"></image>
+        </view>
+        <view class="text-gray">抱团</view>
     </view>
-    <view class="text-gray">抱团</view>
-  </view>
-  <view class="action">
-    <view class="cuIcon-cu-image">
-      <image src="/images/tabbar/about.png"></image>
-      <view class="cu-tag badge"></view>
+    <view class="action">
+        <view class="cuIcon-cu-image" bindtap="me">
+            <image src="/images/tabbar/about.png"></image>
+            <view class="cu-tag badge"></view>
+        </view>
+        <view class="text-gray">我的</view>
     </view>
-    <view class="text-gray">我的</view>
-  </view>
 </view>
