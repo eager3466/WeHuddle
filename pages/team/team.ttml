@@ -1,52 +1,54 @@
 <!-- 搜索栏 -->
 <view class="cu-bar search bg-white">
-    <view class="search-form round">
-        <text class="cuIcon-search"></text>
-        <input type="text" placeholder="搜索图片、文章、视频" confirm-type="search"></input>
+  <view class="search-form round">
+    <text class="cuIcon-search"></text>
+    <input type="text" placeholder="搜索图片、文章、视频" confirm-type="search"></input>
+  </view>
+  <view class="action">
+    <button class="cu-btn bg-orange shadow-blur round">搜索</button>
+  </view>
+</view>
+<!-- 列表 -->
+<view class="cu-list menu-avatar">
+  <view class="cu-item cur">
+    <view class="cu-avatar round  lg"
+      style="background-image:url(https://ossweb-img.qq.com/images/lol/web201310/skin/big81020.jpg);">
+    </view>
+    <view class="content">
+      <view>
+        <text class="text-cut">黑客马拉松缺前端</text>
+        <view class="cu-tag round bg-orange sm">黑客马拉松</view>
+      </view>
+      <view class="text-gray text-sm flex">
+        <text class="text-cut"> 欢迎大家报名黑客马拉松欢迎大家报名黑客马拉松欢迎大家报名黑客马拉松<text
+            class="cuIcon-locationfill text-orange margin-right-xs"></text> 传送中...</text>
+      </view>
     </view>
     <view class="action">
-        <button class="cu-btn bg-orange shadow-blur round">搜索</button>
-    </view>
-</view>
-<!-- 筛选 -->
-<view class="cu-list menu-avatar">
-    <view class="cu-item cur">
-      <view class="cu-avatar round  lg" style="background-image:url(https://ossweb-img.qq.com/images/lol/web201310/skin/big81020.jpg);">
-      </view>
-      <view class="content">
-        <view>
-          <text class="text-cut">黑客马拉松缺前端</text>
-          <view class="cu-tag round bg-orange sm">黑客马拉松</view>
-        </view>
-        <view class="text-gray text-sm flex">
-          <text class="text-cut"> 欢迎大家报名黑客马拉松欢迎大家报名黑客马拉松欢迎大家报名黑客马拉松<text class="cuIcon-locationfill text-orange margin-right-xs"></text> 传送中...</text>
-        </view>
-      </view>
-      <view class="action">
-        <view class="text-grey text-xs">22:20</view>
-        <view class="cuIcon-notice_forbid_fill text-gray"></view>
-      </view>
+      <view class="text-grey text-xs">22:20</view>
+      <view class="cuIcon-commentfill lg  text-gray"></view>
     </view>
   </view>
+</view>
 <!-- 底部栏 -->
 <view class="cu-bar tabbar bg-white shadow foot">
-    <view class="action">
-        <view class="cuIcon-cu-image" bindtap="activity">
-            <image src="/images/tabbar/basics.png"></image>
-        </view>
-        <view class="text-gray">活动</view>
+  <view class="action">
+    <view class="cuIcon-cu-image" bindtap="activity">
+      <image src="/images/tabbar/basics.png"></image>
     </view>
-    <view class="action" bindtap="team">
-        <view class="cuIcon-cu-image">
-            <image src="/images/tabbar/component_cur.png"></image>
-        </view>
-        <view class="text-green">抱团</view>
+    <view class="text-gray">活动</view>
+  </view>
+  <view class="action" bindtap="team">
+    <view class="cuIcon-cu-image">
+      <image src="/images/tabbar/component_cur.png"></image>
     </view>
-    <view class="action">
-        <view class="cuIcon-cu-image" bindtap="me">
-            <image src="/images/tabbar/about.png"></image>
-            <view class="cu-tag badge"></view>
-        </view>
-        <view class="text-gray">我的</view>
+    <view class="text-green">抱团</view>
+  </view>
+  <view class="action">
+    <view class="cuIcon-cu-image" bindtap="me">
+      <image src="/images/tabbar/about.png"></image>
+      <view class="cu-tag badge"></view>
     </view>
+    <view class="text-gray">我的</view>
+  </view>
 </view>

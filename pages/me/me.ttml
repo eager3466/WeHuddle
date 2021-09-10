@@ -1,30 +1,111 @@
-<basics wx:if="{{PageCur=='basics'}}"></basics>
-<component wx:if="{{PageCur=='component'}}"></component>
-<plugin wx:if="{{PageCur=='plugin'}}"></plugin>
-<about wx:if="{{PageCur=='about'}}"></about>
+<scroll-view scroll-y class="scrollPage">
+  <view class="UCenter-bg">
+    <image src="https://ossweb-img.qq.com/images/lol/web201310/skin/big99008.jpg" class="png cu-avatar xl round"
+      mode="widthFix "></image>
+    <view class="text-xl">杨瀚淩
+      <text class="text-df"></text>
+    </view>
+    <view class="margin-top-sm">
+      <text class="text-bold text-blue">yanghanling@xiaomi.com</text>
+    </view>
+    <image src="https://raw.githubusercontent.com/weilanwl/ColorUI/master/demo/images/wave.gif" mode="scaleToFill"
+      class="gif-wave"></image>
+  </view>
+  <view class="padding flex text-center text-grey bg-white shadow-warp">
+    <view class="flex flex-sub flex-direction solid-right">
+      <view class="text-xxl text-orange">{{visitTotal}}</view>
+      <view class="margin-top-sm"> 活动</view>
+    </view>
+    <view class="flex flex-sub flex-direction solid-right">
+      <view class="text-xxl text-blue">{{starCount}}</view>
+      <view class="margin-top-sm"> 抱团</view>
+    </view>
+    <view class="flex flex-sub flex-direction">
+      <view class="text-xxl text-green">{{forksCount}}</view>
+      <view class="margin-top-sm">交流</view>
+    </view>
+  </view>
+  <!-- 抱团记录 -->
+  <view class="cu-list menu card-menu margin-top-xl margin-bottom-xl shadow-lg radius">
+    <view class="cu-item arrow">
+      <view class="content" bindtap="CopyLink" data-link="https://github.com/weilanwl/ColorUI">
+        <text class="cuIcon-github text-grey"></text>
+        <text class="text-grey">历史抱团</text>
+      </view>
+      <text class="text-grey">更多</text>
+    </view>
+    <!-- 列表 -->
+    <view class="cu-list menu-avatar" wx:for="{{3}}" style="margin-top: 0px;">
+      <view class="cu-item cur">
+        <view class="cu-avatar round  lg"
+          style="background-image:url(https://ossweb-img.qq.com/images/lol/web201310/skin/big81020.jpg);">
+        </view>
+        <view class="content">
+          <view>
+            <text class="text-cut">黑客马拉松缺前端</text>
+            <view class="cu-tag round bg-orange sm">黑客马拉松</view>
+          </view>
+          <view class="text-gray text-sm flex">
+            <text class="text-cut"> 欢迎大家报名黑客马拉松欢迎大家报名黑客马拉松欢迎大家报名黑客马拉松<text
+                class="cuIcon-locationfill text-orange margin-right-xs"></text> 传送中...</text>
+          </view>
+        </view>
+        <view class="action">
+          <view class="text-grey text-xs">22:20</view>
+          <view class="cuIcon-commentfill lg  text-gray"></view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <!-- 历史活动 -->
+  <view class="cu-list menu card-menu margin-top-xl margin-bottom-xl shadow-lg radius">
+    <view class="cu-item arrow">
+      <view class="content" bindtap="CopyLink" data-link="https://github.com/weilanwl/ColorUI">
+        <text class="cuIcon-github text-grey"></text>
+        <text class="text-grey">历史活动</text>
+      </view>
+      <text class="text-grey">更多</text>
+    </view>
+    <!-- 列表 -->
+    <view class="cu-card article {{isCard?'no-card':''}}" wx:for="{{3}}">
+      <view class="cu-item shadow" style="margin:0px;">
+        <view class="title">
+          <view class="text-cut">小米黑客马拉松</view>
+        </view>
+        <view class="content">
+          <image src="https://ossweb-img.qq.com/images/lol/web201310/skin/big10006.jpg" mode="aspectFill"></image>
+          <view class="desc">
+            <view class="text-content"> 折磨生出苦难，苦难又会加剧折磨，凡间这无穷的循环，将有我来终结！真正的恩典因不完整而美丽，因情感而真诚，因脆弱而自由！</view>
+            <view>
+              <view class="cu-tag bg-red light sm round">IT竞赛</view>
+              <view class="cu-tag bg-green light sm round">团队赛</view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="cu-tabbar-height"></view>
+  <!-- 底部栏 -->
+</scroll-view>
 <view class="cu-bar tabbar bg-white shadow foot">
-  <view class="action" bindtap="NavChange" data-cur="basics">
-    <view class='cuIcon-cu-image'>
-      <image src="/images/tabbar/basics{{PageCur=='basics'?'_cur':''}}.png"></image>
+  <view class="action">
+    <view class="cuIcon-cu-image" bindtap="activity">
+      <image src="/images/tabbar/basics.png"></image>
     </view>
-    <view class="{{PageCur=='basics'?'text-green':'text-gray'}}">元素</view>
+    <view class="text-gray">活动</view>
   </view>
-  <view class="action" bindtap="NavChange" data-cur="component">
-    <view class='cuIcon-cu-image'>
-      <image src="/images/tabbar/component{{PageCur=='component'?'_cur':''}}.png"></image>
+  <view class="action" bindtap="team">
+    <view class="cuIcon-cu-image">
+      <image src="/images/tabbar/component.png"></image>
     </view>
-    <view class="{{PageCur=='component'?'text-green':'text-gray'}}">组件</view>
+    <view class="text-gray">抱团</view>
   </view>
-  <view class="action" bindtap="NavChange" data-cur="plugin">
-    <view class='cuIcon-cu-image'>
-      <image src="/images/tabbar/plugin{{PageCur=='plugin'?'_cur':''}}.png"></image>
+  <view class="action">
+    <view class="cuIcon-cu-image" bindtap="me">
+      <image src="/images/tabbar/about_cur.png"></image>
+      <view class="cu-tag badge"></view>
     </view>
-    <view class="{{PageCur=='plugin'?'text-green':'text-gray'}}">扩展</view>
-  </view>
-  <view class="action" bindtap="NavChange" data-cur="about">
-    <view class='cuIcon-cu-image'>
-      <image src="/images/tabbar/about{{PageCur=='about'?'_cur':''}}.png"></image>
-    </view>
-    <view class="{{PageCur=='about'?'text-green':'text-gray'}}">关于</view>
+    <view class="text-green">我的</view>
   </view>
 </view>
