@@ -1,5 +1,5 @@
 <!-- 搜索栏 -->
-<view class="cu-bar search bg-white">
+<view class="cu-bar search bg-white fixed">
   <view class="search-form round">
     <text class="cuIcon-search"></text>
     <input type="text" placeholder="搜索图片、文章、视频" confirm-type="search"></input>
@@ -9,7 +9,9 @@
   </view>
 </view>
 <!-- 列表 -->
-<view class="cu-list menu-avatar">
+<!-- <scroll-view scroll-y > -->
+<view style="margin-top:50px;"></view>
+<view class="cu-list menu-avatar" style="margin: 5px;" wx:for={{10}}>
   <view class="cu-item cur">
     <view class="cu-avatar round  lg"
       style="background-image:url(https://ossweb-img.qq.com/images/lol/web201310/skin/big81020.jpg);">
@@ -30,6 +32,8 @@
     </view>
   </view>
 </view>
+<view style="height:50px;"></view>
+<!-- </scroll-view> -->
 <!-- 底部栏 -->
 <view class="cu-bar tabbar bg-white shadow foot">
   <view class="action">
@@ -42,12 +46,11 @@
     <view class="cuIcon-cu-image">
       <image src="/images/tabbar/component_cur.png"></image>
     </view>
-    <view class="text-green">抱团</view>
+    <view class="text-orange">抱团</view>
   </view>
   <view class="action">
     <view class="cuIcon-cu-image" bindtap="me">
       <image src="/images/tabbar/about.png"></image>
-      <view class="cu-tag badge"></view>
     </view>
     <view class="text-gray">我的</view>
   </view>

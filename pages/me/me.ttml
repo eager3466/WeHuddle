@@ -1,12 +1,12 @@
 <scroll-view scroll-y class="scrollPage">
   <view class="UCenter-bg">
-    <image src="https://ossweb-img.qq.com/images/lol/web201310/skin/big99008.jpg" class="png cu-avatar xl round"
+    <image src={{img}} class="png cu-avatar xl round"
       mode="widthFix "></image>
     <view class="text-xl">杨瀚淩
       <text class="text-df"></text>
     </view>
     <view class="margin-top-sm">
-      <text class="text-bold text-blue">yanghanling@xiaomi.com</text>
+      <text class="text-bold text-blue">{{email}}</text>
     </view>
     <image src="https://raw.githubusercontent.com/weilanwl/ColorUI/master/demo/images/wave.gif" mode="scaleToFill"
       class="gif-wave"></image>
@@ -59,8 +59,8 @@
   </view>
   <!-- 历史活动 -->
   <view class="cu-list menu card-menu margin-top-xl margin-bottom-xl shadow-lg radius">
-    <view class="cu-item arrow">
-      <view class="content" bindtap="CopyLink" data-link="https://github.com/weilanwl/ColorUI">
+    <view class="cu-item arrow" bindtap="CopyLink" data-link="https://github.com/weilanwl/ColorUI">
+      <view class="content" >
         <text class="cuIcon-github text-grey"></text>
         <text class="text-grey">历史活动</text>
       </view>
@@ -104,7 +104,6 @@
   <view class="action">
     <view class="cuIcon-cu-image" bindtap="me">
       <image src="/images/tabbar/about_cur.png"></image>
-      <view class="cu-tag badge"></view>
     </view>
     <view class="text-green">我的</view>
   </view>

@@ -2,9 +2,10 @@ App({
   globalData: {
     "name": "",
     "user_img": "",
-    "open_id":"",
-    "email":"",
-    "ip":"http://192.168.70.18:8081/",
+    "user_id": "",
+    "email": "",
+    'phone':'',
+    "ip": "http://192.168.70.18:8081/",
   },
   onLaunch: function () {
     // 可以通过 tt.getSetting 先查询一下用户是否授权了 "scope.record" 这个 scope
@@ -21,16 +22,22 @@ App({
           header: {
             'content-type': 'application/json'
           },
-          method: "POST", 
+          method: "POST",
           success(res) {
-            console.log(`request 调用成功 ${JSON.stringify(res)}`);
+            let content = res.data.data;
+            console.log(`request 调用成功 ${JSON.stringify(content)}`);
+            getApp().globalData.name=content.loginUserName
+            getApp().globalData.user_img=content.loginUserImg
+            getApp().globalData.user_id=content.loginName
+            getApp().globalData.email=content.loginUserEmail
+            getApp().globalData.phone=content.loginUserPhone
           },
-          fail(res) {
+          fail() {
             console.log(`request 调用失败`);
           }
         });
       },
-      fail(res) {
+      fail() {
         console.log(`login 调用失败`);
       }
     })

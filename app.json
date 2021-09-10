@@ -2,7 +2,8 @@
   "pages":[
     "pages/index/index",
     "pages/team/team",
-    "pages/me/me"
+    "pages/me/me",
+    "pages/team_detail/team_detail"
   ],
   "window":{
     "backgroundTextStyle":"light",

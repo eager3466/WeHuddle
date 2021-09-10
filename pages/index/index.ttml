@@ -1,4 +1,4 @@
-<view class="cu-bar search bg-white">
+<view class="cu-bar search bg-white fixed">
   <view class="search-form round">
     <text class="cuIcon-search"></text>
     <input type="text" placeholder="搜索图片、文章、视频" confirm-type="search"></input>
@@ -8,8 +8,8 @@
   </view>
 </view>
 <!-- 轮播图 -->
-<swiper class="screen-swiper {{DotStyle?'square-dot':'round-dot'}}" indicator-dots="true" circular="true"
-  autoplay="true" interval="5000" duration="500">
+<swiper class="screen-swiper round-dot " indicator-dots="true" circular="true"
+  autoplay="true" interval="5000" duration="500" style="margin-top:50px;">
   <swiper-item wx:for="{{swiperList}}" wx:key>
     <image src="{{item.url}}" mode="aspectFill" wx:if="{{item.type=='image'}}"></image>
     <video src="{{item.url}}" autoplay loop muted show-play-btn="{{false}}" controls="{{false}}" objectFit="cover"
@@ -24,13 +24,10 @@
   <view class="cu-item {{1==TabCur?'text-white cur':''}}" bindtap="tabSelect" data-id="1">
     <text class="cuIcon-upstagefill"></text> 日常活动
   </view>
-  <view class="cu-item {{2==TabCur?'text-white cur':''}}" bindtap="tabSelect" data-id="2">
-    <text class="cuIcon-clothesfill"></text> 商品内购
-  </view>
 </scroll-view>
 <!-- 活动列表 -->
-<view class="cu-card article {{isCard?'no-card':''}}">
-  <view class="cu-item shadow">
+<view class="cu-card article {{isCard?'no-card':''}}" wx:for={{10}}>
+  <view class="cu-item shadow" style="margin: 5px">
     <view class="title">
       <view class="text-cut">小米黑客马拉松</view>
     </view>
@@ -46,13 +43,14 @@
     </view>
   </view>
 </view>
+<view style="height:50px"></view>
 <!-- 底部栏 -->
 <view class="cu-bar tabbar bg-white shadow foot">
     <view class="action">
         <view class="cuIcon-cu-image" bindtap="activity">
             <image src="/images/tabbar/basics_cur.png"></image>
         </view>
-        <view class="text-green">活动</view>
+        <view class="text-orange">活动</view>
     </view>
     <view class="action" bindtap="team">
         <view class="cuIcon-cu-image">
@@ -63,7 +61,6 @@
     <view class="action">
         <view class="cuIcon-cu-image" bindtap="me">
             <image src="/images/tabbar/about.png"></image>
-            <view class="cu-tag badge"></view>
         </view>
         <view class="text-gray">我的</view>
     </view>

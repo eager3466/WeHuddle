@@ -1,24 +1,22 @@
 const app = getApp();
 Page({
+
     /**
      * 页面的初始数据
      */
     data: {
-        email:'',
-        img:'',
-        visitTotal: '11',
-        starCount: '12',
-        forksCount: '10',
-    },
 
+    },
+    isCard(e) {
+        this.setData({
+            isCard: 1
+        })
+    },
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
-        this.setData({
-            email:app.globalData.email,
-            img:app.globalData.user_img
-        })
+
     },
 
     /**
@@ -68,23 +66,5 @@ Page({
      */
     onShareAppMessage: function () {
 
-    },
-    // 点击活动
-    activity: function () {
-        wx.redirectTo({
-            url: '/pages/index/index',
-        })
-    },
-    // 点击抱团
-    team: function () {
-        wx.redirectTo({
-            url: '/pages/team/team',
-        })
-    },
-    //点击我的
-    me: function () {
-        wx.redirectTo({
-            url: '/pages/me/me',
-        })
-    },
-});
+    }
+})
