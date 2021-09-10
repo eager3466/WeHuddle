@@ -1,0 +1,69 @@
+<form catchsubmit="formSubmit" catchreset="formReset">
+	<view class="cu-form-group margin-top">
+		<view class="title">* 标题</view>
+		<input name="title" placeholder="填写你吸睛的队名"></input>
+	</view>
+	<view class="cu-form-group">
+		<view class="title">开始日期</view>
+		<picker name="start_date" mode="date" value="{{date}}" start="2021-09-10" end="2121-09-10" bindchange="DateChange">
+			<view class="picker">
+				{{date}}
+			</view>
+		</picker>
+	</view>
+		</view>
+		<view class="cu-form-group">
+		<view class="title">结束日期</view>
+		<picker name="end_date" mode="date" value="{{date}}" start="2021-09-10" end="2120-09-10" bindchange="DateChange">
+			<view class="picker">
+				{{date}}
+			</view>
+		</picker>
+	</view>
+
+	<view class="cu-form-group margin-top">
+		<view class="title">所属活动</view>
+		<picker name="activity" bindchange="PickerChange" value="{{picker[index]}}" range="{{picker}}">
+			<view class="picker">
+				{{index?picker[index]:'无'}}
+			</view>
+		</picker>
+	</view>
+
+	<view class="cu-form-group">
+		<view class="title">报名上限</view>
+		<input placeholder="最大人数" name="max_people"></input>
+	</view>
+	<view class="cu-form-group margin-top">
+		<textarea name="description" maxlength="-1" disabled="{{modalName!=null}}" bindinput="textareaAInput" placeholder="抱团简介"></textarea>
+	</view>
+
+	<view class="cu-bar bg-white margin-top">
+		<view class="action">
+			图片上传
+		</view>
+		<view class="action">
+			{{imgList.length}}/4
+		</view>
+	</view>
+	
+	<view class="cu-form-group">
+		<view class="grid col-4 grid-square flex-sub">
+			<view class="bg-img" wx:for="{{imgList}}" wx:key="{{index}}" bindtap="ViewImage" data-url="{{imgList[index]}}">
+				<image name="picture" src='{{imgList[index]}}' mode='aspectFill'></image>
+				<view class="cu-tag bg-red" catchtap="DelImg" data-index="{{index}}">
+					<text class="cuIcon-close"></text>
+				</view>
+			</view>
+			<view class="solids" bindtap="ChooseImage" wx:if="{{imgList.length<4}}">
+				<text class="cuIcon-cameraadd"></text>
+			</view>
+		</view>
+	</view>
+	
+	<view class="padding">
+		<button class="cu-btn block bg-blue margin-tb-sm lg" form-type="submit">提交</button>
+	</view>
+</form>
+
+	
