@@ -1,0 +1,31 @@
+<view class="container">
+	<image class="image" src="{{item.imageUrl}}" mode="scallToFill" ></image>
+
+	<view class="title">活动介绍</view>
+	<view class="content">{{item.description}}</view>
+
+	<view class='prop'>
+        <text class='key'>主办方：</Text>
+        <text class='value'>{{item.sponsor}}</Text>
+    </view>
+
+	<view class='prop'>
+        <text class='key'>活动期限：</Text>
+        <text class='value'>{{item.startDate}} 至 {{item.endDate}}</Text>
+    </view>
+
+	<view class='prop'>
+        <text class='key'>参赛要求：</Text>
+        <text class='value'>{{item.requirement}}</Text>
+    </view>
+
+	<view class='prop'>
+        <text class='key'>活动官网：</Text>
+        <text class='value'>{{item.website}}</Text>
+    </view>
+
+	<view class="operation">
+        <button class='btn-join bg-orange' bindtap="signup">我要报名</button>
+        <button class='btn-join bg-orange' bindtap="group">我要参团</button>
+	</view>
+</view>

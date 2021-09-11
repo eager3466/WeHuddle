@@ -3,7 +3,8 @@
     "pages/index/index",
     "pages/team/team",
     "pages/me/me",
-    "pages/team_detail/team_detail"
+    "pages/team_detail/team_detail",
+    "pages/detail/detail"
   ],
   "window":{
     "backgroundTextStyle":"light",

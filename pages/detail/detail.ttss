@@ -1,0 +1,48 @@
+.container {
+  width: 100vw;
+  flex: 1;
+  padding-left: 30rpx;
+  padding-right: 30rpx;
+}
+.image {
+  width: 100vw;
+  height: 275rpx;
+  border-radius: 20rpx;
+  overflow: hidden;
+}
+.title {
+  margin-top: 30rpx;
+  font-weight: bold;
+  font-size: 32rpx;
+}
+.content {
+  margin-top:  20rpx;
+  margin-bottom: 40rpx;
+  font-size: 26rpx;
+}
+.prop {
+  margin-top: 10rpx;
+}
+.key {
+    font-size: 24rpx;
+    color: #232c1a;
+    font-weight: 300;
+}
+.value {
+    font-size: 24rpx;
+    color: #232c1a;
+    font-weight: 400;
+}
+.operation {
+  margin-top: 100rpx;
+}
+.btn-join {
+  width: 80vw;
+  height: 72rpx;
+  margin-top: 32rpx;
+  margin-bottom: 32rpx;
+  border-radius: 36rpx;
+  color: #ffffff;
+  font-size: 28rpx;
+  border: 0rpx;
+}
