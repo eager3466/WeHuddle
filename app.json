@@ -6,7 +6,8 @@
     "pages/team_detail/team_detail",
     "pages/detail/detail",
     "pages/submit/activity/activity",
-    "pages/submit/team/team"
+    "pages/submit/team/team",
+    "pages/webview/webview"
   ],
   "window":{
     "backgroundTextStyle":"light",

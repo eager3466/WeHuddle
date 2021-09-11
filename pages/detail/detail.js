@@ -52,6 +52,9 @@ Page({
   },
 
   signup: function() {
+    wx.redirectTo({
+      url: '/pages/webview/webview?url=' + this.data.activity.activityRegistrationAddress
+    })
   },
   group: function() {
     wx.redirectTo({

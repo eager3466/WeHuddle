@@ -19,8 +19,13 @@
         <text class='value'>{{activity.activityOfficialWebsite}}</Text>
     </view>
 
+    <view class='prop'>
+        <text class='key'>活动地点：</Text>
+        <text class='value'>{{activity.activityPlace}}</Text>
+    </view>
+
 	<view class="operation">
         <button class='btn-join bg-orange' bindtap="signup" wx:if="{{activity.activityRegistrationAddress!=null&&activity.activityRegistrationAddress!=''}}">我要报名</button>
-        <button class='btn-join bg-orange' bindtap="group" wx:if="{{activity.activityIsPersonal==1}}">我要参团</button>
+        <button class='btn-join bg-orange' bindtap="group" wx:if="{{activity.activityIsPersonal==0}}">我要参团</button>
 	</view>
 </view>
