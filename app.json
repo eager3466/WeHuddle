@@ -7,7 +7,9 @@
     "pages/detail/detail",
     "pages/submit/activity/activity",
     "pages/submit/team/team",
-    "pages/webview/webview"
+    "pages/webview/webview",
+    "pages/search/activity/activity",
+    "pages/search/team/team"
   ],
   "window":{
     "backgroundTextStyle":"light",

@@ -1,0 +1,22 @@
+<!-- 列表 -->
+<!-- <scroll-view scroll-y > -->
+<view class="cu-list menu-avatar" style="margin: 5px;" tt:for="{{teamlist}}" data-id="{{item.teamId}}" bindtap="showteam">
+  <view class="cu-item cur">
+    <view class="cu-avatar round  lg" style="background-image:url({{item.teamCaptainImg}});">
+    </view>
+    <view class="content">
+      <view>
+        <text class="text-cut">{{item.teamTitle}}</text>
+        <view class="cu-tag round bg-orange sm " tt:if="{{item.teamActivityName != ''}}" >{{item.teamActivityName}}</view>
+      </view>
+      <view class="text-gray text-sm flex">
+        <text class="text-cut">{{item.teamDesc}}</text>
+      </view>
+    </view>
+    <view class="action">
+      <view class="text-grey text-xs">{{tools.substring(item.teamCreateTime,5,10)}}</view>
+      <view class="cuIcon-commentfill lg  text-gray"></view>
+    </view>
+  </view>
+</view>
+<!-- </scroll-view> -->

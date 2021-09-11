@@ -1,0 +1,19 @@
+<!-- 活动列表 -->
+<view class="cu-card article {{isCard?'no-card':''}}" wx:for={{activityList}}>
+  <view class="cu-item shadow" style="margin: 5px" data-id={{item.activityId}} bindtap="viewDetail">
+    <view class="title">
+      <view class="text-cut">{{item.activityName}}</view>
+    </view>
+    <view class="content">
+      <image src="{{item.activityImg}}" mode="aspectFill"></image>
+      <view class="desc">
+        <view class="text-content">{{item.activityDesc}}</view>
+        <view class="activity-time">
+          <view class="text-grey">{{item.activityStartTime}}</view>
+          <view class="text-grey">~</view>
+          <view class="text-grey">{{item.activityEndTime}}</view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

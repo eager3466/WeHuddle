@@ -6,6 +6,7 @@ Page({
      */
     data: {
         teamlist: [],
+        searchStr: ""
     },
 
     /**
@@ -82,6 +83,17 @@ Page({
      */
     onShareAppMessage: function () {
 
+    },
+    // 点击搜索
+    onSearchInput: function(e)  {
+        this.setData({
+            searchStr: e.detail.value
+        })
+    },
+    search: function() {
+        wx.navigateTo({
+            url: '/pages/search/team/team?word=' + this.data.searchStr
+        })
     },
     // 点击活动
     activity: function () {

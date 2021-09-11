@@ -25,6 +25,7 @@ Page({
       url: '../../images/banner/4.jpg'
     }],
 
+    searchStr: "",
     tabSelect: 1,
     activityList: [],
   },
@@ -114,6 +115,17 @@ Page({
     });
   },
 
+  // 点击搜索
+  onSearchInput: function(e)  {
+    this.setData({
+      searchStr: e.detail.value
+    })
+  },
+  search: function() {
+    wx.navigateTo({
+      url: '/pages/search/activity/activity?word=' + this.data.searchStr
+    })
+  },
   // 点击tab
   tabSelect: function (event) {
     let selected = event.currentTarget.dataset.id
