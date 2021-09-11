@@ -1,7 +1,7 @@
 <form catchsubmit="formSubmit" catchreset="formReset">
 	<view class="cu-form-group margin-top">
-		<view class="title">标题</view>
-		<input name="title" bindinput="setTeamTitle" value={{teamTitle}} placeholder="填写你吸睛的队名"></input>
+		<view class="title">抱团标题</view>
+		<input name="title" bindinput="setTeamTitle" placeholder="输入您的抱团宣传"></input>
 	</view>
 	<view class="cu-form-group">
 		<view class="title">开始日期</view>
@@ -32,15 +32,15 @@
 
 	<view class="cu-form-group">
 		<view class="title">报名上限</view>
-		<input bindinput="setTeamMaxPeople" value={{teamMaxPeople}} placeholder="最大人数" name="max_people"></input>
+		<input bindinput="setTeamMaxPeople" placeholder="请填写抱团人数上限" name="max_people"></input>
 	</view>
 	<view class="cu-form-group margin-top">
-		<textarea name="description" bindinput="setTeamDesc" value={{teamDesc}} maxlength="-1" disabled="{{modalName!=null}}" placeholder="抱团简介"></textarea>
+		<textarea name="description" bindinput="setTeamDesc" maxlength="-1" disabled="{{modalName!=null}}" placeholder="请输入您的抱团要求"></textarea>
 	</view>
 
 	<view class="cu-bar bg-white margin-top">
 		<view class="action">
-			封面上传（推荐16:9宽屏照片）
+			封面上传（最好是宽屏照片）
 		</view>
 	</view>
 	
