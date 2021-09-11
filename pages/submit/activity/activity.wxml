@@ -1,18 +1,18 @@
 <form catchsubmit="formSubmit" catchreset="formReset">
 	<view class="cu-form-group margin-top">
 		<view class="title">活动名称</view>
-		<input name="activityName" bindinput="setActvityName" value={{activityName}} placeholder="名称名称呀"></input>
+		<input name="activityName" bindinput="setActivityName" value={{activityName}} placeholder="名称名称呀"></input>
 	</view>
 	<view class="cu-form-group margin-top">
 		<view class="title">举办方</view>
-		<input name="activityHost" bindinput="setActvityHost" value={{activityHost}} placeholder="你是哪拨人"></input>
+		<input name="activityHost" bindinput="setActivityHost" value={{activityHost}} placeholder="你是哪拨人"></input>
 	</view>
 	<view class="cu-form-group margin-top">
-		<textarea name="activityDesc" bindinput="setActvityDesc" value={{activityDesc}} maxlength="-1" disabled="{{modalName!=null}}" bindinput="textareaAInput" placeholder="活动简介"></textarea>
+		<textarea name="activityDesc" bindinput="setActivityDesc" value={{activityDesc}} maxlength="-1" disabled="{{modalName!=null}}" bindinput="textareaAInput" placeholder="活动简介"></textarea>
 	</view>
 	<view class="cu-form-group">
 		<view class="title">开始日期</view>
-		<picker name="activityStartTime" mode="date" bindchange="actvityStartTimeChange" start="2021-09-10" end="2121-09-10">
+		<picker name="activityStartTime" mode="date" bindchange="activityStartTimeChange" start="2021-09-10" end="2121-09-10">
 			<view class="picker">
 				{{activityStartTime}}
 			</view>
@@ -21,7 +21,7 @@
 		</view>
 		<view class="cu-form-group">
 		<view class="title">结束日期</view>
-		<picker name="activityEndTime" mode="date" bindchange="actvityEndTimeChange" start="2021-09-10" end="2120-09-10">
+		<picker name="activityEndTime" mode="date" bindchange="activityEndTimeChange" start="2021-09-10" end="2120-09-10">
 			<view class="picker">
 				{{activityEndTime}}
 			</view>
@@ -37,7 +37,7 @@
 	</view>
 	<view class="cu-form-group">
 		<view class="title">报名链接</view>
-		<input name="setActvityRegistrationAddress" bindinput="setActvityRegistrationAddress" value={{activityOfficialWebsite}} placeholder="the link"></input>
+		<input name="setActivityRegistrationAddress" bindinput="setActivityRegistrationAddress" value={{activityRegistrationAddress}} placeholder="the link"></input>
 	</view>
 	<view class="cu-form-group">
 		<view class="title">比赛地点</view>

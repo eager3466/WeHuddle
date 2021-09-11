@@ -177,36 +177,36 @@ Page({
     });
   },
 
-  setActvityName:function(e){
+  setActivityName:function(e){
     this.setData({activityName:e.detail.value});
   },
 
-  setActvityHost:function(e){
+  setActivityHost:function(e){
     this.setData({activityHost:e.detail.value});
   },
 
-  setActvityDesc:function(e){
+  setActivityDesc:function(e){
     this.setData({activityDesc:e.detail.value});
   },
-  actvityStartTimeChange:function(e){
+  activityStartTimeChange:function(e){
     this.setData({activityStartTime:e.detail.value});
   },
-  actvityEndTimeChange:function(e){
+  activityEndTimeChange:function(e){
     this.setData({activityEndTime:e.detail.value});
   },
-  setActvityMaxPeopleNum:function(e){
+  setActivityMaxPeopleNum:function(e){
     this.setData({activityMaxPeopleNum:e.detail.value});
   },
-  setActvityOfficialWebsite:function(e){
+  setActivityOfficialWebsite:function(e){
     this.setData({activityOfficialWebsite:e.detail.value});
   },
-  setActvityRegistrationAddress:function(e){
+  setActivityRegistrationAddress:function(e){
     this.setData({activityRegistrationAddress:e.detail.value});
   },
-  setActvityPlace:function(e){
+  setActivityPlace:function(e){
     this.setData({activityPlace:e.detail.value});
   },
-  setActvityIsPersonal:function(e){
+  setActivityIsPersonal:function(e){
     this.setData({activityIsPersonal:e.detail.value});
   },
   activityIndividualChange:function(e){
