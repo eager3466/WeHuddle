@@ -1,14 +1,14 @@
 <form catchsubmit="formSubmit" catchreset="formReset">
 	<view class="cu-form-group margin-top">
-		<view class="title">活动名称</view>
-		<input name="activityName" bindinput="setActivityName" value={{activityName}} placeholder="名称名称呀"></input>
+		<view class="title">活动标题</view>
+		<input name="activityName" bindinput="setActivityName" placeholder="请输入您的活动标题"></input>
 	</view>
 	<view class="cu-form-group margin-top">
 		<view class="title">举办方</view>
-		<input name="activityHost" bindinput="setActivityHost" value={{activityHost}} placeholder="你是哪拨人"></input>
+		<input name="activityHost" bindinput="setActivityHost"></input>
 	</view>
 	<view class="cu-form-group margin-top">
-		<textarea name="activityDesc" bindinput="setActivityDesc" value={{activityDesc}} maxlength="-1" disabled="{{modalName!=null}}" bindinput="textareaAInput" placeholder="活动简介"></textarea>
+		<textarea name="activityDesc" bindinput="setActivityDesc" maxlength="-1" disabled="{{modalName!=null}}" bindinput="textareaAInput" placeholder="请输入您的活动简介"></textarea>
 	</view>
 	<view class="cu-form-group">
 		<view class="title">开始日期</view>
@@ -29,19 +29,19 @@
 	</view>
 	<view class="cu-form-group">
 		<view class="title">报名上限</view>
-		<input name="activityMaxPeopleNum" bindinput="setActivityMaxPeopleNum" value={{activityMaxPeopleNum}} placeholder="最大人数"></input>
+		<input name="activityMaxPeopleNum" bindinput="setActivityMaxPeopleNum" placeholder="请填写活动人数上限"></input>
 	</view>
 	<view class="cu-form-group">
 		<view class="title">官网链接</view>
-		<input name="activityOfficialWebsite" bindinput="setActivityOfficialWebsite" value={{activityOfficialWebsite}} placeholder="the link"></input>
+		<input name="activityOfficialWebsite" bindinput="setActivityOfficialWebsite" ></input>
 	</view>
 	<view class="cu-form-group">
 		<view class="title">报名链接</view>
-		<input name="setActivityRegistrationAddress" bindinput="setActivityRegistrationAddress" value={{activityRegistrationAddress}} placeholder="the link"></input>
+		<input name="setActivityRegistrationAddress" bindinput="setActivityRegistrationAddress" ></input>
 	</view>
 	<view class="cu-form-group">
 		<view class="title">比赛地点</view>
-		<input name="activityPlace" bindinput="setActivityPlace" value={{activityPlace}} placeholder="where" ></input>
+		<input name="activityPlace" bindinput="setActivityPlace" ></input>
 	</view>
 	<view class="cu-form-group">
 		<view class="title">是否为个人赛</view>
@@ -49,7 +49,7 @@
 		<radio-group name="activityIsPersonal" bindchange="activityIndividualChange" >
 		<label class="margin-left-sm">
 			<radio class="blue sm radio" value="0" checked></radio>
-			<text> 否</text>
+			<text>否</text>
 		</label>
 		<label class="margin-left-sm">
 			<radio class="blue sm radio" value="1"></radio>
@@ -62,7 +62,7 @@
 
 	<view class="cu-bar bg-white margin-top">
 		<view class="action">
-			封面上传（推荐16:9宽屏照片）
+			封面上传（推荐宽屏照片）
 		</view>
 	</view>
 	
