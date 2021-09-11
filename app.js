@@ -25,7 +25,7 @@ App({
           method: "POST",
           success(res) {
             let content = res.data.data;
-            console.log(`request 调用成功 ${JSON.stringify(content)}`);
+            console.log(`获取user_id = ${ content.loginName}`);
             getApp().globalData.name = content.loginUserName;
             getApp().globalData.user_img = content.loginUserImg;
             getApp().globalData.user_id = content.loginName;
@@ -33,7 +33,7 @@ App({
             getApp().globalData.phone = content.loginUserPhone;
           },
           fail() {
-            console.log(`request 调用失败`);
+            console.log(`获取user_id  调用失败`);
           }
         });
       },

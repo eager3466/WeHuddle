@@ -14,6 +14,10 @@ Page({
     onLoad: function (options) {
         var that=this 
         // console.log(app.globalData.user_id)
+        console.log(options.title)
+        if(options.title==undefined){
+            options.title=''
+        }
         tt.request({
             url: `${app.globalData.ip}/team/getAllTeam?code=${app.globalData.user_id}`,
             data: {

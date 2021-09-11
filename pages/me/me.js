@@ -4,11 +4,13 @@ Page({
      * 页面的初始数据
      */
     data: {
-        email:'',
-        img:'',
+        email: '',
+        img: '',
         visitTotal: '11',
         starCount: '12',
         forksCount: '10',
+        name: '',
+        teamlist: {}
     },
 
     /**
@@ -16,9 +18,11 @@ Page({
      */
     onLoad: function (options) {
         this.setData({
-            email:app.globalData.email,
-            img:app.globalData.user_img
+            email: app.globalData.email,
+            img: app.globalData.user_img,
+            name: app.globalData.name
         })
+        this.teammessage()
     },
 
     /**
@@ -87,4 +91,26 @@ Page({
             url: '/pages/me/me',
         })
     },
+    teammessage: function () {
+        var that = this
+        tt.request({
+            url: `${app.globalData.ip}/team/getTeamsByCaptain?code=${app.globalData.user_id}`,
+            data: {
+                userName: `${app.globalData.user_id}`
+            },
+            header: {
+                'content-type': 'application/json'
+            },
+            method: "POST",
+            success(res) {
+                console.log(res.data.data)
+                that.setData({
+                    teamlist: res.data.data,
+                })
+            },
+            fail() {
+                console.log(`获取用户创建的团队  调用失败`);
+            }
+        });
+    }
 });

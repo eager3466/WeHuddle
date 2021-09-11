@@ -13,7 +13,16 @@ Page({
         teamImg: "",
         imglist: "",
         nums: '',
-        maxpeople: ''
+        maxpeople: '',
+        sendtext: '',
+        display: ['', 'none'],
+        textareaText:'',
+        say:[{
+            img:'https://s1-imfile.feishucdn.com/static-resource/v1/a1a21bf2-ae7c-4f5d-895b-f4a69c37e3dg~?image_size=72x72&cut_type=&quality=&format=image&sticker_format=.webp',
+            name:'徐明东',
+            text:'我也好像加入',
+            time:'2021年9月10日'
+        }]
     },
     isCard(e) {
         this.setData({
@@ -105,13 +114,23 @@ Page({
                     maxpeople: data.team.teamMaxPeople,
                     imglist: data.users,
                 })
+                console.log(app.globalData.user_id)
+                console.log(data.users)
+                for (let i = 0; i < data.users.length; i++) {
+                    if (app.globalData.user_id == data.users[i].loginName) {
+                        that.setData({
+                            display:['none',''],
+                        })
+                    }
+                }
+
             },
             fail() {
                 console.log(`request 调用失败`);
             }
         })
     },
-    
+
     showModal(e) {
         this.setData({
             modalName: e.currentTarget.dataset.target
@@ -135,7 +154,43 @@ Page({
             checkbox: items
         })
     },
-    textareaBInput:function(e){
-        console.log(e)
+    textareaBInput: function (e) {
+        console.log(e.detail.value)
+        this.setData({
+            sendtext: e.detail.value,
+        })
+        console.log(this.data.sendtext)
+    },
+    send: function (e) {
+        var that = this
+        console.log("申请内容：" + that.data.sendtext)
+        tt.request({
+            url: `${app.globalData.ip}/registration/addRegistration?code=${app.globalData.user_id}`,
+            data: {
+                'teamId': that.team_id,
+                'userName': app.globalData.user_id,
+                'applyReason': that.data.sendtext,
+            },
+            header: {
+                'content-type': 'application/json'
+            },
+            method: "POST",
+            success(res) {
+                console.log(res)
+                that.hideModal()
+                wx.showToast({
+                    title: res.data.errmsg,
+                    icon: 'succes',
+                    duration: 1000,
+                    mask: true
+                })
+                that.setData({
+                    textareaText:'',
+                })
+            },
+            fail(res) {
+                console.log(`request 调用失败${res}`);
+            }
+        })
     }
 })
