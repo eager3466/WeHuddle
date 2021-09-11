@@ -3,7 +3,6 @@ Page({
   data: {
     StatusBar: app.globalData.StatusBar,
     CustomBar: app.globalData.CustomBar,
-    index: null,
     picker: ['','喵喵喵', '汪汪汪', '哼唧哼唧'],
     teamTitle: '团队标题',
     teamDesc: '团队描述',
@@ -13,7 +12,8 @@ Page({
     teamMaxPeople: '5',
     teamActivityId: '1',
     teamActivityName: '黑客马拉松',
-
+    activityIdList:[],
+    activityNameList:[],
     multiIndex: [0, 0, 0],
     time: '12:01',
     date: '2018-12-25',
@@ -26,7 +26,10 @@ Page({
   PickerChange(e) {
     console.log(e);
     this.setData({
-      index: e.detail.value
+      index: e.detail.value,
+    })
+    this.setData({
+      teamActivityId: this.data.activityNameList[this.data.index],
     })
   },
   MultiChange(e) {
@@ -135,7 +138,6 @@ Page({
       'teamStartTime':this.data.teamStartTime,
       'teamEndTime':this.data.teamEndTime,
       'teamMaxPeople':this.data.teamMaxPeople,
-      'teamActivityId':this.data.teamActivityId,
       'teamImg':this.data.teamImg,
       'teamActivityName':this.data.teamActivityName,
     },
@@ -172,5 +174,45 @@ Page({
   },
   setTeamActivityName:function(e){
     this.setData({teamActivityName:e.detail.value});
-  }
+  },
+
+  /**
+   * 生命周期函数--监听页面初次渲染完成
+   */
+  onReady: function () {
+    this.loadData()
+  },
+
+  /**
+   * 加载数据
+   */
+  loadData: function() {
+    let ip = app.globalData.ip
+    var that = this
+    tt.request({
+          url: app.globalData.ip + '/activity/getAllTeamActivity',
+          method: "POST",
+          success(res) {
+            console.log(res.data);
+            let activityList = res.data.data;
+            console.log(activityList)
+          
+            var tempName = [];
+            for(var x=0;x< activityList.length;x++){
+            
+              tempName[x] = activityList[x].activityName
+            }
+            
+            console.log(tempName)
+            that.setData({
+              activityNameList: tempName
+            })
+            console.log(that.data.activityNameList)
+          },
+          fail() {
+            console.log(`getList 调用失败`);
+          }
+        });
+  },
+
 })
