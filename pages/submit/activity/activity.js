@@ -5,55 +5,19 @@ Page({
     CustomBar: app.globalData.CustomBar,
     index: null,
     picker: ['','喵喵喵', '汪汪汪', '哼唧哼唧'],
-    multiArray: [
-      ['无脊柱动物', '脊柱动物'],
-      ['扁性动物', '线形动物', '环节动物', '软体动物', '节肢动物'],
-      ['猪肉绦虫', '吸血虫']
-    ],
-    objectMultiArray: [
-      [{
-          id: 0,
-          name: '无脊柱动物'
-        },
-        {
-          id: 1,
-          name: '脊柱动物'
-        }
-      ],
-      [{
-          id: 0,
-          name: '扁性动物'
-        },
-        {
-          id: 1,
-          name: '线形动物'
-        },
-        {
-          id: 2,
-          name: '环节动物'
-        },
-        {
-          id: 3,
-          name: '软体动物'
-        },
-        {
-          id: 3,
-          name: '节肢动物'
-        }
-      ],
-      [{
-          id: 0,
-          name: '猪肉绦虫'
-        },
-        {
-          id: 1,
-          name: '吸血虫'
-        }
-      ]
-    ],
+    
     multiIndex: [0, 0, 0],
     time: '12:01',
-    date: '2018-12-25',
+    activityName: '1',
+    activityHost: '2',
+    activityDesc: '3',
+    activityStartTime: '2021-09-12',
+    activityEndTime: '2021-09-17',
+    activityMaxPeopleNum: '4',
+    activityOfficialWebsite: '5',
+    activityPlace: '6',
+    activityIsPersonal: '7',
+
     region: ['广东省', '广州市', '海珠区'],
     imgList: [],
     modalName: null,
@@ -197,7 +161,73 @@ Page({
       textareaBValue: e.detail.value
     })
   },
-  formSubmit: function (e) {
-    console.log('form submit，data：', e.detail.value)
+
+  formSubmit: function () {
+     console.log(this.data.activityName);
+     console.log(this.data.activityHost);
+     console.log(this.data.activityDesc);
+     console.log(this.data.activityStartTime);
+     console.log(this.data.activityEndTime);
+     console.log(this.data.activityMaxPeopleNum);
+     console.log(this.data.activityOfficialWebsite);
+     console.log(this.data.activityPlace);
+     console.log(this.data.activityIsPersonal);
+    tt.request({
+    url: 'http://10.220.46.153:8081/activity/addActivity',
+    data: {
+      'activityName':this.data.activityName,
+      'activityHost':this.data.activityHost,
+      'activityDesc':this.data.activityDesc,
+      'activityStartTime':this.data.activityStartTime,
+      'activityEndTime':this.data.activityEndTime,
+      'activityMaxPeopleNum':this.data.activityMaxPeopleNum,
+      'activityOfficialWebsite':this.data.activityOfficialWebsite,
+      'activityPlace':this.data.activityPlace,
+      'activityIsPersonal':this.data.activityIsPersonal,
+    },
+    header: {
+        'content-type': 'application/json'
+    },
+    method: 'POST',
+    success (res) {
+        console.log(JSON.stringify(res));
+    },
+    fail (res) {
+        console.log(`request22 调用失败`);
+    }
+    });
+  },
+
+  setActvityName:function(e){
+    this.setData({activityName:e.detail.value});
+  },
+
+  setActvityHost:function(e){
+    this.setData({activityHost:e.detail.value});
+  },
+
+  setActvityDesc:function(e){
+    this.setData({activityDesc:e.detail.value});
+  },
+  actvityStartTimeChange:function(e){
+    this.setData({activityStartTime:e.detail.value});
+  },
+  actvityEndTimeChange:function(e){
+    this.setData({activityEndTime:e.detail.value});
+  },
+  setActvityMaxPeopleNum:function(e){
+    this.setData({activityMaxPeopleNum:e.detail.value});
+  },
+  setActvityOfficialWebsite:function(e){
+    this.setData({activityOfficialWebsite:e.detail.value});
+  },
+  setActvityPlace:function(e){
+    this.setData({activityPlace:e.detail.value});
+  },
+  setActvityIsPersonal:function(e){
+    this.setData({activityIsPersonal:e.detail.value});
+  },
+  activityIndividualChange:function(e){
+    this.setData({activityEndTime:e.detail.value});
   },
 })

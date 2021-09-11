@@ -1,49 +1,48 @@
 <form catchsubmit="formSubmit" catchreset="formReset">
 	<view class="cu-form-group margin-top">
 		<view class="title">活动名称</view>
-		<input name="title" placeholder="名称名称呀"></input>
+		<input name="activityName" bindinput="setActvityName" value={{activityName}} placeholder="名称名称呀"></input>
 	</view>
 	<view class="cu-form-group margin-top">
 		<view class="title">举办方</view>
-		<input name="organizers" placeholder="你是哪拨人"></input>
+		<input name="activityHost" bindinput="setActvityHost" value={{activityHost}} placeholder="你是哪拨人"></input>
+	</view>
+	<view class="cu-form-group margin-top">
+		<textarea name="activityDesc" bindinput="setActvityHost" value={{activityDesc}} maxlength="-1" disabled="{{modalName!=null}}" bindinput="textareaAInput" placeholder="活动简介"></textarea>
 	</view>
 	<view class="cu-form-group">
 		<view class="title">开始日期</view>
-		<picker name="start_date" mode="date" value="{{date}}" start="2021-09-10" end="2121-09-10" bindchange="DateChange">
+		<picker name="activityStartTime" mode="date" bindchange="actvityStartTimeChange" start="2021-09-10" end="2121-09-10">
 			<view class="picker">
-				{{date}}
+				{{activityStartTime}}
 			</view>
 		</picker>
 	</view>
 		</view>
 		<view class="cu-form-group">
 		<view class="title">结束日期</view>
-		<picker name="end_date" mode="date" value="{{date}}" start="2021-09-10" end="2120-09-10" bindchange="DateChange">
+		<picker name="activityEndTime" mode="date" bindchange="actvityEndTimeChange" start="2021-09-10" end="2120-09-10">
 			<view class="picker">
-				{{date}}
+				{{activityEndTime}}
 			</view>
 		</picker>
 	</view>
-
 	<view class="cu-form-group">
 		<view class="title">报名上限</view>
-		<input placeholder="最大人数" name="max_people"></input>
+		<input name="activityMaxPeopleNum" bindinput="setActivityMaxPeopleNum" value={{activityMaxPeopleNum}} placeholder="最大人数"></input>
 	</view>
 	<view class="cu-form-group">
 		<view class="title">官网链接</view>
-		<input placeholder="the link" name="website"></input>
+		<input name="activityOfficialWebsite" bindinput="setActivityOfficialWebsite" value={{activityOfficialWebsite}} placeholder="the link"></input>
 	</view>
 	<view class="cu-form-group">
 		<view class="title">比赛地点</view>
-		<input placeholder="where" name="position"></input>
-	</view>
-	<view class="cu-form-group margin-top">
-		<textarea name="description" maxlength="-1" disabled="{{modalName!=null}}" bindinput="textareaAInput" placeholder="活动简介"></textarea>
+		<input name="activityPlace" bindinput="setActivityPlace" value={{activityPlace}} placeholder="where" ></input>
 	</view>
 	<view class="cu-form-group">
 		<view class="title">是否为个人赛</view>
 		<view class="action">
-		<radio-group name="individual" bindchange="SetBorderSize" >
+		<radio-group name="activityIsPersonal" bindchange="activityIndividualChange" >
 		<label class="margin-left-sm">
 			<radio class="blue sm radio" value="false" checked></radio>
 			<text> 否</text>
@@ -57,7 +56,7 @@
 	</view>	
 	</view>
 	
-<view class="cu-bar bg-white margin-top">
+	<view class="cu-bar bg-white margin-top">
 		<view class="action">
 			图片上传
 		</view>
@@ -69,7 +68,7 @@
 	<view class="cu-form-group">
 		<view class="grid col-4 grid-square flex-sub">
 			<view class="bg-img" wx:for="{{imgList}}" wx:key="{{index}}" bindtap="ViewImage" data-url="{{imgList[index]}}">
-				<image name="picture" src='{{imgList[index]}}' mode='aspectFill'></image>
+				<image name="activityImg" src='{{imgList[index]}}' mode='aspectFill'></image>
 				<view class="cu-tag bg-red" catchtap="DelImg" data-index="{{index}}">
 					<text class="cuIcon-close"></text>
 				</view>
