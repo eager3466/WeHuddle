@@ -8,7 +8,7 @@
 		<input name="activityHost" bindinput="setActvityHost" value={{activityHost}} placeholder="你是哪拨人"></input>
 	</view>
 	<view class="cu-form-group margin-top">
-		<textarea name="activityDesc" bindinput="setActvityHost" value={{activityDesc}} maxlength="-1" disabled="{{modalName!=null}}" bindinput="textareaAInput" placeholder="活动简介"></textarea>
+		<textarea name="activityDesc" bindinput="setActvityDesc" value={{activityDesc}} maxlength="-1" disabled="{{modalName!=null}}" bindinput="textareaAInput" placeholder="活动简介"></textarea>
 	</view>
 	<view class="cu-form-group">
 		<view class="title">开始日期</view>

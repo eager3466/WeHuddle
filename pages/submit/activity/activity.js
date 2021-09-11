@@ -138,6 +138,7 @@ Page({
       'activityEndTime':this.data.activityEndTime,
       'activityMaxPeopleNum':this.data.activityMaxPeopleNum,
       'activityImg':this.data.activityImg,
+      'activityType':1,
       'activityOfficialWebsite':this.data.activityOfficialWebsite,
       'activityPlace':this.data.activityPlace,
       'activityIsPersonal':this.data.activityIsPersonal,
@@ -148,6 +149,25 @@ Page({
     method: 'POST',
     success (res) {
         console.log(JSON.stringify(res));
+        tt.showToast({
+          title: '添加成功',
+          duration: 2000,
+          success (res) {
+              console.log(`${res}`);
+          },
+          fail (res) {
+              console.log(`showToast 调用失败`);
+          }
+        });
+        tt.navigateBack({
+            delta: 1,
+            success (res) {
+                console.log(`${res}`);
+            },
+            fail (res) {
+                console.log(`navigateBack 调用失败`);
+            }
+        });
     },
     fail (res) {
         console.log(`request22 调用失败`);
@@ -185,6 +205,6 @@ Page({
     this.setData({activityIsPersonal:e.detail.value});
   },
   activityIndividualChange:function(e){
-    this.setData({activityEndTime:e.detail.value});
+    this.setData({activityIsPersonal:e.detail.value});
   },
 })
