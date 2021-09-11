@@ -14,6 +14,7 @@ Page({
     activityStartTime: '2021-09-12',
     activityEndTime: '2021-09-17',
     activityMaxPeopleNum: '4',
+    activityImg:'',
     activityOfficialWebsite: '5',
     activityPlace: '6',
     activityIsPersonal: '7',
@@ -35,67 +36,7 @@ Page({
       multiIndex: e.detail.value
     })
   },
-  MultiColumnChange(e) {
-    let data = {
-      multiArray: this.data.multiArray,
-      multiIndex: this.data.multiIndex
-    };
-    data.multiIndex[e.detail.column] = e.detail.value;
-    switch (e.detail.column) {
-      case 0:
-        switch (data.multiIndex[0]) {
-          case 0:
-            data.multiArray[1] = ['扁性动物', '线形动物', '环节动物', '软体动物', '节肢动物'];
-            data.multiArray[2] = ['猪肉绦虫', '吸血虫'];
-            break;
-          case 1:
-            data.multiArray[1] = ['鱼', '两栖动物', '爬行动物'];
-            data.multiArray[2] = ['鲫鱼', '带鱼'];
-            break;
-        }
-        data.multiIndex[1] = 0;
-        data.multiIndex[2] = 0;
-        break;
-      case 1:
-        switch (data.multiIndex[0]) {
-          case 0:
-            switch (data.multiIndex[1]) {
-              case 0:
-                data.multiArray[2] = ['猪肉绦虫', '吸血虫'];
-                break;
-              case 1:
-                data.multiArray[2] = ['蛔虫'];
-                break;
-              case 2:
-                data.multiArray[2] = ['蚂蚁', '蚂蟥'];
-                break;
-              case 3:
-                data.multiArray[2] = ['河蚌', '蜗牛', '蛞蝓'];
-                break;
-              case 4:
-                data.multiArray[2] = ['昆虫', '甲壳动物', '蛛形动物', '多足动物'];
-                break;
-            }
-            break;
-          case 1:
-            switch (data.multiIndex[1]) {
-              case 0:
-                data.multiArray[2] = ['鲫鱼', '带鱼'];
-                break;
-              case 1:
-                data.multiArray[2] = ['青蛙', '娃娃鱼'];
-                break;
-              case 2:
-                data.multiArray[2] = ['蜥蜴', '龟', '壁虎'];
-                break;
-            }
-            break;
-        }
-        data.multiIndex[2] = 0;
-        break;
-    }
-    this.setData(data);
-  },
+
   TimeChange(e) {
     this.setData({
       time: e.detail.value
@@ -112,21 +53,36 @@ Page({
     })
   },
   ChooseImage() {
+    var that = this;
     wx.chooseImage({
       count: 4, //默认9
       sizeType: ['original', 'compressed'], //可以指定是原图还是压缩图，默认二者都有
       sourceType: ['album'], //从相册选择
       success: (res) => {
-        if (this.data.imgList.length != 0) {
-          this.setData({
-            imgList: this.data.imgList.concat(res.tempFilePaths)
-          })
-        } else {
-          this.setData({
-            imgList: res.tempFilePaths
-          })
-        }
-      }
+        console.log(res.tempFilePaths[0])
+        console.log(app.globalData.ip + '/uploadImg')
+          tt.uploadFile({
+            url: app.globalData.ip + '/uploadImg',
+            filePath: res.tempFilePaths[0],
+            name: 'file',
+            fileName: res.tempFilePaths[0],
+            success (res) {
+                if (res.statusCode === 200) {
+                    console.log(JSON.parse(res.data).data)
+                    that.setData({
+                      activityImg: JSON.parse(res.data).data
+                    })
+                    console.log(`uploadFile 调用成功 ${res.data}`);
+                }
+            },
+            fail (res) {
+                console.log(res)
+            }
+          });
+        this.setData({
+          imgList: res.tempFilePaths
+        })
+      },
     });
   },
   ViewImage(e) {
@@ -137,10 +93,9 @@ Page({
   },
   DelImg(e) {
     wx.showModal({
-      title: '召唤师',
-      content: '确定要删除这段回忆吗？',
-      cancelText: '再看看',
-      confirmText: '再见',
+      content: '确定要删除该照片？',
+      cancelText: '取消',
+      confirmText: '确定',
       success: res => {
         if (res.confirm) {
           this.data.imgList.splice(e.currentTarget.dataset.index, 1);
@@ -169,11 +124,12 @@ Page({
      console.log(this.data.activityStartTime);
      console.log(this.data.activityEndTime);
      console.log(this.data.activityMaxPeopleNum);
+     console.log(this.data.activityImg);
      console.log(this.data.activityOfficialWebsite);
      console.log(this.data.activityPlace);
      console.log(this.data.activityIsPersonal);
     tt.request({
-    url: 'http://10.220.46.153:8081/activity/addActivity',
+    url: app.globalData.ip + '/activity/addActivity',
     data: {
       'activityName':this.data.activityName,
       'activityHost':this.data.activityHost,
@@ -181,6 +137,7 @@ Page({
       'activityStartTime':this.data.activityStartTime,
       'activityEndTime':this.data.activityEndTime,
       'activityMaxPeopleNum':this.data.activityMaxPeopleNum,
+      'activityImg':this.data.activityImg,
       'activityOfficialWebsite':this.data.activityOfficialWebsite,
       'activityPlace':this.data.activityPlace,
       'activityIsPersonal':this.data.activityIsPersonal,

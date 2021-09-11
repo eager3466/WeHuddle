@@ -9,6 +9,7 @@ Page({
     teamDesc: '团队描述',
     teamStartTime: '2021-09-12',
     teamEndTime: '2021-09-17',
+    teamImg: '',
     teamMaxPeople: '5',
     teamActivityId: '1',
     teamActivityName: '黑客马拉松',
@@ -49,20 +50,25 @@ Page({
     })
   },
   ChooseImage() {
+    var that = this;
     wx.chooseImage({
       count: 1, //默认9
       sizeType: ['original', 'compressed'], //可以指定是原图还是压缩图，默认二者都有
       sourceType: ['album'], //从相册选择
       success: (res) => {
         console.log(res.tempFilePaths[0])
-        console.log(app.globalData.ip + 'uploadImg')
+        console.log(app.globalData.ip + '/uploadImg')
           tt.uploadFile({
-            url: app.globalData.ip + 'uploadImg',
+            url: app.globalData.ip + '/uploadImg',
             filePath: res.tempFilePaths[0],
             name: 'file',
             fileName: res.tempFilePaths[0],
             success (res) {
                 if (res.statusCode === 200) {
+                    console.log(JSON.parse(res.data).data)
+                    that.setData({
+                      teamImg: JSON.parse(res.data).data
+                    })
                     console.log(`uploadFile 调用成功 ${res.data}`);
                 }
             },
@@ -73,7 +79,6 @@ Page({
         this.setData({
           imgList: res.tempFilePaths
         })
-        
       },
       fail: (res) => {
         console.log("choose failed")
@@ -122,7 +127,7 @@ Page({
      console.log(this.data.teamActivityId);
      console.log(this.data.teamActivityName);
     tt.request({
-    url: 'http://10.220.46.153:8081/team/addTeam',
+    url: app.globalData.ip + '/team/addTeam',
     data: {
       'teamTitle':this.data.teamTitle,
       'teamDesc':this.data.teamDesc,
@@ -131,8 +136,10 @@ Page({
       'teamEndTime':this.data.teamEndTime,
       'teamMaxPeople':this.data.teamMaxPeople,
       'teamActivityId':this.data.teamActivityId,
+      'teamImg':this.data.teamImg,
       'teamActivityName':this.data.teamActivityName,
     },
+    method: 'POST',
     header: {
         'content-type': 'application/json'
     },
