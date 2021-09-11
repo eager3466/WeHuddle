@@ -26,15 +26,7 @@ Page({
     }],
 
     tabSelect: 1,
-    activityList: [{
-      activityId: 1,
-      activityName: "第二届小米黑客马拉松",
-      activityImg: "https://ossweb-img.qq.com/images/lol/web201310/skin/big10006.jpg",
-      activityDesc: "折磨生出苦难，苦难又会加剧折磨，凡间这无穷的循环，将有我来终结！真正的恩典因不完整而美丽，因情感而真诚，因脆弱而自由！",
-      activityStartTime: "2021-09-10",
-      activityEndTime: "2021-09-12"
-    }
-    ]
+    activityList:[],
   },
 
   /**
@@ -48,7 +40,7 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-    // this.loadData()
+    this.loadData()
   },
 
   /**
@@ -99,6 +91,7 @@ Page({
   loadData: function() {
     let ip = app.globalData.ip
     var that = this
+    console.log(that.data.tabSelect)
     tt.request({
           url: `${ip}/activity/getActivityByType`,
           data: {
@@ -110,11 +103,11 @@ Page({
           method: "POST",
           success(res) {
             let content = res.data.data;
-            let list = JSON.stringify(content);
+            // let list = JSON.stringify(content);
+            console.log(content)
             that.setData({
-              activityList: list
+              activityList: content
             })
-            console.log(`getList 调用成功 ${list}`);
           },
           fail() {
             console.log(`getList 调用失败`);
