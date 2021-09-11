@@ -29,7 +29,7 @@ Page({
       index: e.detail.value,
     })
     this.setData({
-      teamActivityId: this.data.activityNameList[this.data.index],
+      teamActivityName: this.data.activityNameList[this.data.index],
     })
   },
   MultiChange(e) {
