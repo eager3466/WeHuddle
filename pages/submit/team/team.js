@@ -5,52 +5,14 @@ Page({
     CustomBar: app.globalData.CustomBar,
     index: null,
     picker: ['','喵喵喵', '汪汪汪', '哼唧哼唧'],
-    multiArray: [
-      ['无脊柱动物', '脊柱动物'],
-      ['扁性动物', '线形动物', '环节动物', '软体动物', '节肢动物'],
-      ['猪肉绦虫', '吸血虫']
-    ],
-    objectMultiArray: [
-      [{
-          id: 0,
-          name: '无脊柱动物'
-        },
-        {
-          id: 1,
-          name: '脊柱动物'
-        }
-      ],
-      [{
-          id: 0,
-          name: '扁性动物'
-        },
-        {
-          id: 1,
-          name: '线形动物'
-        },
-        {
-          id: 2,
-          name: '环节动物'
-        },
-        {
-          id: 3,
-          name: '软体动物'
-        },
-        {
-          id: 3,
-          name: '节肢动物'
-        }
-      ],
-      [{
-          id: 0,
-          name: '猪肉绦虫'
-        },
-        {
-          id: 1,
-          name: '吸血虫'
-        }
-      ]
-    ],
+    teamTitle: '团队标题',
+    teamDesc: '团队描述',
+    teamStartTime: '2021-09-12',
+    teamEndTime: '2021-09-17',
+    teamMaxPeople: '5',
+    teamActivityId: '1',
+    teamActivityName: '黑客马拉松',
+
     multiIndex: [0, 0, 0],
     time: '12:01',
     date: '2018-12-25',
@@ -71,67 +33,6 @@ Page({
       multiIndex: e.detail.value
     })
   },
-  MultiColumnChange(e) {
-    let data = {
-      multiArray: this.data.multiArray,
-      multiIndex: this.data.multiIndex
-    };
-    data.multiIndex[e.detail.column] = e.detail.value;
-    switch (e.detail.column) {
-      case 0:
-        switch (data.multiIndex[0]) {
-          case 0:
-            data.multiArray[1] = ['扁性动物', '线形动物', '环节动物', '软体动物', '节肢动物'];
-            data.multiArray[2] = ['猪肉绦虫', '吸血虫'];
-            break;
-          case 1:
-            data.multiArray[1] = ['鱼', '两栖动物', '爬行动物'];
-            data.multiArray[2] = ['鲫鱼', '带鱼'];
-            break;
-        }
-        data.multiIndex[1] = 0;
-        data.multiIndex[2] = 0;
-        break;
-      case 1:
-        switch (data.multiIndex[0]) {
-          case 0:
-            switch (data.multiIndex[1]) {
-              case 0:
-                data.multiArray[2] = ['猪肉绦虫', '吸血虫'];
-                break;
-              case 1:
-                data.multiArray[2] = ['蛔虫'];
-                break;
-              case 2:
-                data.multiArray[2] = ['蚂蚁', '蚂蟥'];
-                break;
-              case 3:
-                data.multiArray[2] = ['河蚌', '蜗牛', '蛞蝓'];
-                break;
-              case 4:
-                data.multiArray[2] = ['昆虫', '甲壳动物', '蛛形动物', '多足动物'];
-                break;
-            }
-            break;
-          case 1:
-            switch (data.multiIndex[1]) {
-              case 0:
-                data.multiArray[2] = ['鲫鱼', '带鱼'];
-                break;
-              case 1:
-                data.multiArray[2] = ['青蛙', '娃娃鱼'];
-                break;
-              case 2:
-                data.multiArray[2] = ['蜥蜴', '龟', '壁虎'];
-                break;
-            }
-            break;
-        }
-        data.multiIndex[2] = 0;
-        break;
-    }
-    this.setData(data);
-  },
   TimeChange(e) {
     this.setData({
       time: e.detail.value
@@ -149,19 +50,33 @@ Page({
   },
   ChooseImage() {
     wx.chooseImage({
-      count: 4, //默认9
+      count: 1, //默认9
       sizeType: ['original', 'compressed'], //可以指定是原图还是压缩图，默认二者都有
       sourceType: ['album'], //从相册选择
       success: (res) => {
-        if (this.data.imgList.length != 0) {
-          this.setData({
-            imgList: this.data.imgList.concat(res.tempFilePaths)
-          })
-        } else {
-          this.setData({
-            imgList: res.tempFilePaths
-          })
-        }
+        console.log(res.tempFilePaths[0])
+        console.log(app.globalData.ip + 'uploadImg')
+          tt.uploadFile({
+            url: app.globalData.ip + 'uploadImg',
+            filePath: res.tempFilePaths[0],
+            name: 'file',
+            fileName: res.tempFilePaths[0],
+            success (res) {
+                if (res.statusCode === 200) {
+                    console.log(`uploadFile 调用成功 ${res.data}`);
+                }
+            },
+            fail (res) {
+                console.log(res)
+            }
+          });
+        this.setData({
+          imgList: res.tempFilePaths
+        })
+        
+      },
+      fail: (res) => {
+        console.log("choose failed")
       }
     });
   },
@@ -173,10 +88,9 @@ Page({
   },
   DelImg(e) {
     wx.showModal({
-      title: '召唤师',
-      content: '确定要删除这段回忆吗？',
-      cancelText: '再看看',
-      confirmText: '再见',
+      content: '确定要删除该照片？',
+      cancelText: '取消',
+      confirmText: '确定',
       success: res => {
         if (res.confirm) {
           this.data.imgList.splice(e.currentTarget.dataset.index, 1);
@@ -197,7 +111,59 @@ Page({
       textareaBValue: e.detail.value
     })
   },
-  formSubmit: function (e) {
-    console.log('form submit，data：', e.detail.value)
+
+  formSubmit: function () {
+     console.log(this.data.teamTitle);
+     console.log(this.data.teamDesc);
+     console.log(app.globalData.user_id);
+     console.log(this.data.teamStartTime);
+     console.log(this.data.teamEndTime);
+     console.log(this.data.teamMaxPeople);
+     console.log(this.data.teamActivityId);
+     console.log(this.data.teamActivityName);
+    tt.request({
+    url: 'http://10.220.46.153:8081/team/addTeam',
+    data: {
+      'teamTitle':this.data.teamTitle,
+      'teamDesc':this.data.teamDesc,
+      'teamCaptain':app.globalData.user_id,
+      'teamStartTime':this.data.teamStartTime,
+      'teamEndTime':this.data.teamEndTime,
+      'teamMaxPeople':this.data.teamMaxPeople,
+      'teamActivityId':this.data.teamActivityId,
+      'teamActivityName':this.data.teamActivityName,
+    },
+    header: {
+        'content-type': 'application/json'
+    },
+    success (res) {
+        console.log(JSON.stringify(res));
+    },
+    fail (res) {
+        console.log(`request33 调用失败`);
+    }
+    });
   },
+
+  setTeamTitle:function(e){
+    this.setData({teamTitle:e.detail.value});
+  },
+  setTeamDesc:function(e){
+    this.setData({teamDesc:e.detail.value});
+  },
+  teamStartTimeChange:function(e){
+    this.setData({teamStartTime:e.detail.value});
+  },
+  teamEndTimeChange:function(e){
+    this.setData({teamEndTime:e.detail.value});
+  },
+  setTeamMaxPeople:function(e){
+    this.setData({teamMaxPeople:e.detail.value});
+  },
+  setTeamActivityId:function(e){
+    this.setData({teamActivityId:e.detail.value});
+  },
+  setTeamActivityName:function(e){
+    this.setData({teamActivityName:e.detail.value});
+  }
 })
