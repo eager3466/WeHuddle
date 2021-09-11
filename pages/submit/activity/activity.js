@@ -16,8 +16,9 @@ Page({
     activityMaxPeopleNum: '4',
     activityImg:'',
     activityOfficialWebsite: '5',
+    activityRegistrationAddress: 'http://i.mi.com',
     activityPlace: '6',
-    activityIsPersonal: '7',
+    activityIsPersonal: '0',
 
     region: ['广东省', '广州市', '海珠区'],
     imgList: [],
@@ -140,6 +141,7 @@ Page({
       'activityImg':this.data.activityImg,
       'activityType':1,
       'activityOfficialWebsite':this.data.activityOfficialWebsite,
+      'activityRegistrationAddress':this.data.activityRegistrationAddress,
       'activityPlace':this.data.activityPlace,
       'activityIsPersonal':this.data.activityIsPersonal,
     },
@@ -197,6 +199,9 @@ Page({
   },
   setActvityOfficialWebsite:function(e){
     this.setData({activityOfficialWebsite:e.detail.value});
+  },
+  setActvityRegistrationAddress:function(e){
+    this.setData({activityRegistrationAddress:e.detail.value});
   },
   setActvityPlace:function(e){
     this.setData({activityPlace:e.detail.value});

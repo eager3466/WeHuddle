@@ -36,6 +36,10 @@
 		<input name="activityOfficialWebsite" bindinput="setActivityOfficialWebsite" value={{activityOfficialWebsite}} placeholder="the link"></input>
 	</view>
 	<view class="cu-form-group">
+		<view class="title">报名链接</view>
+		<input name="setActvityRegistrationAddress" bindinput="setActvityRegistrationAddress" value={{activityOfficialWebsite}} placeholder="the link"></input>
+	</view>
+	<view class="cu-form-group">
 		<view class="title">比赛地点</view>
 		<input name="activityPlace" bindinput="setActivityPlace" value={{activityPlace}} placeholder="where" ></input>
 	</view>
@@ -44,11 +48,11 @@
 		<view class="action">
 		<radio-group name="activityIsPersonal" bindchange="activityIndividualChange" >
 		<label class="margin-left-sm">
-			<radio class="blue sm radio" value="false" checked></radio>
+			<radio class="blue sm radio" value="0" checked></radio>
 			<text> 否</text>
 		</label>
 		<label class="margin-left-sm">
-			<radio class="blue sm radio" value="true"></radio>
+			<radio class="blue sm radio" value="1"></radio>
 			<text>是</text>
 		</label>
 		</radio-group>
