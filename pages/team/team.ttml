@@ -19,7 +19,7 @@
     <view class="content">
       <view>
         <text class="text-cut">{{item.teamTitle}}</text>
-        <view class="cu-tag round bg-orange sm" tt:if="{{item.teamActivityName != null}}" >{{item.teamActivityName}}</view>
+        <view class="cu-tag round bg-orange sm " tt:if="{{item.teamActivityName != ''}}" >{{item.teamActivityName}}</view>
       </view>
       <view class="text-gray text-sm flex">
         <text class="text-cut">{{item.teamDesc}}</text>
