@@ -134,7 +134,7 @@ Page({
     showModal(e) {
         var that=this
         tt.showPrompt({
-            title: '原因',
+            title: '请输入申请原因',
             success(res) {
                 if (res.confirm) {
                     console.log('confirm and inputValue is: ' + res.inputValue);

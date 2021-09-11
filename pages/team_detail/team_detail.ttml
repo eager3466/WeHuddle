@@ -60,22 +60,3 @@
     <button class="cu-btn bg-green shadow">评论</button>
   </view>
 </view>
-<view class="cu-modal {{modalName=='DialogModal1'?'show':''}}">
-  <view class="cu-dialog">
-    <view class="cu-bar bg-white justify-end">
-      <view class="content">请写理由</view>
-      <view class="action" bindtap="hideModal">
-        <text class="cuIcon-close text-red"></text>
-      </view>
-    </view>
-    <view class="padding-xl text-left">
-      <textarea maxlength="-1"  bindinput="textareaBInput" value='{{textareaText}}' placeholder="多行文本输入框"></textarea>
-    </view>
-    <view class="cu-bar bg-white justify-end">
-      <view class="action">
-        <button class="cu-btn line-green text-green" bindtap="hideModal">取消</button>
-        <button class="cu-btn bg-green margin-left" bindtap="send">发送</button>
-      </view>
-    </view>
-  </view>
-</view>
