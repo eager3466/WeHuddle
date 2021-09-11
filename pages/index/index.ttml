@@ -26,7 +26,6 @@
     <text class="cuIcon-upstagefill"></text> 日常活动
   </view>
 </scroll-view>
-
 <!-- 发布 -->
 <text class="floating shadow-blur" bindtap="publish"></text>
 

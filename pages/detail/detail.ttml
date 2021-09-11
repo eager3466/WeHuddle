@@ -1,5 +1,5 @@
 <view class="container">
-	<image class="image" src="{{activity.activityImg}}" mode="scallToFill" ></image>
+	<image class="image" style="margin-top:15px;" src="{{activity.activityImg}}"  mode="widthFix"></image>
 
 	<view class="title">活动介绍</view>
 	<view class="content">{{activity.activityDesc}}</view>

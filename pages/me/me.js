@@ -10,7 +10,8 @@ Page({
         starCount: '12',
         forksCount: '10',
         name: '',
-        teamlist: {}
+        teamlist: {},
+        activityList: [],
     },
 
     /**
@@ -23,6 +24,7 @@ Page({
             name: app.globalData.name
         })
         this.teammessage()
+        this.getActivity()
     },
 
     /**
@@ -112,5 +114,40 @@ Page({
                 console.log(`获取用户创建的团队  调用失败`);
             }
         });
-    }
+    },
+    // 跳转到详情页
+    showteam: function (e) {
+        let team_id = e.currentTarget.dataset.id
+        console.log(team_id)
+        wx.navigateTo({
+            url: `../team_detail/team_detail?team_id=${team_id}`
+        })
+    },
+    //获取活动
+    getActivity: function () {
+        let ip = app.globalData.ip
+        var that = this
+        console.log(that.data.tabSelect)
+        tt.request({
+            url: `${ip}/activity/getAllActivity?code=${app.globalData.user_id}`,
+            data: {
+                activityName: ""
+            },
+            header: {
+                'content-type': 'application/json'
+            },
+            method: "POST",
+            success(res) {
+                let content = res.data;
+                // let list = JSON.stringify(content);
+                console.log(content)
+                that.setData({
+                    activityList: content
+                })
+            },
+            fail() {
+                console.log(`getList 调用失败`);
+            }
+        });
+    },
 });

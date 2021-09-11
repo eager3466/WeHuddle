@@ -25,24 +25,25 @@
       <view class="margin-top-sm">交流</view>
     </view>
   </view>
-  <!-- 抱团记录 -->
+  <!-- 创建的团队 -->
   <view class="cu-list menu card-menu margin-top-xl margin-bottom-xl shadow-lg radius">
     <view class="cu-item arrow">
       <view class="content" bindtap="CopyLink" data-link="https://github.com/weilanwl/ColorUI">
         <text class="cuIcon-github text-grey"></text>
-        <text class="text-grey">历史抱团</text>
+        <text class="text-grey">我的团队</text>
       </view>
       <text class="text-grey">更多</text>
     </view>
     <!-- 列表 -->
-    <view class="cu-list menu-avatar" wx:for="{{teamlist}}" style="margin-top: 0px;">
+    <view class="cu-list menu-avatar" wx:for="{{teamlist}}" style="margin-top: 0px;" data-id="{{item.teamId}}"
+      bindtap="showteam">
       <view class="cu-item cur">
         <view class="cu-avatar round  lg" style="background-image:url({{item.teamCaptainImg}});">
         </view>
         <view class="content">
           <view>
             <text class="text-cut">{{item.teamTitle}}</text>
-            <view class="cu-tag round bg-orange sm" tt:if="{{item.teamActivityName != null}}">{{item.teamActivityName}}
+            <view class="cu-tag round bg-orange sm" tt:if="{{item.teamActivityName != ''}}">{{item.teamActivityName}}
             </view>
           </view>
           <view class="text-gray text-sm flex">
@@ -61,23 +62,24 @@
     <view class="cu-item arrow" bindtap="CopyLink" data-link="https://github.com/weilanwl/ColorUI">
       <view class="content">
         <text class="cuIcon-github text-grey"></text>
-        <text class="text-grey">历史活动</text>
+        <text class="text-grey">我的活动</text>
       </view>
       <text class="text-grey">更多</text>
     </view>
     <!-- 列表 -->
-    <view class="cu-card article {{isCard?'no-card':''}}" wx:for="{{3}}">
-      <view class="cu-item shadow" style="margin:0px;">
+    <view class="cu-card article {{isCard?'no-card':''}}" wx:for={{activityList}}>
+      <view class="cu-item shadow" style="margin: 5px" data-id={{item.activityId}} bindtap="viewDetail">
         <view class="title">
-          <view class="text-cut">小米黑客马拉松</view>
+          <view class="text-cut">{{item.activityName}}</view>
         </view>
         <view class="content">
-          <image src="https://ossweb-img.qq.com/images/lol/web201310/skin/big10006.jpg" mode="aspectFill"></image>
+          <image src="{{item.activityImg}}" mode="aspectFill"></image>
           <view class="desc">
-            <view class="text-content"> 折磨生出苦难，苦难又会加剧折磨，凡间这无穷的循环，将有我来终结！真正的恩典因不完整而美丽，因情感而真诚，因脆弱而自由！</view>
-            <view>
-              <view class="cu-tag bg-red light sm round">IT竞赛</view>
-              <view class="cu-tag bg-green light sm round">团队赛</view>
+            <view class="text-content">{{item.activityDesc}}</view>
+            <view class="activity-time">
+              <view class="text-grey">{{item.activityStartTime}}</view>
+              <view class="text-grey">~</view>
+              <view class="text-grey">{{item.activityEndTime}}</view>
             </view>
           </view>
         </view>
