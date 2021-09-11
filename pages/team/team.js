@@ -12,16 +12,25 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
+        
+    },
+
+    /**
+     * 生命周期函数--监听页面初次渲染完成
+     */
+    onReady: function () {
+
+    },
+
+    /**
+     * 生命周期函数--监听页面显示
+     */
+    onShow: function () {
         var that=this 
-        // console.log(app.globalData.user_id)
-        console.log(options.title)
-        if(options.title==undefined){
-            options.title=''
-        }
         tt.request({
             url: `${app.globalData.ip}/team/getAllTeam?code=${app.globalData.user_id}`,
             data: {
-                'teamTitle': options.title,
+                'teamTitle': '',
             },
             header: {
                 'content-type': 'application/json'
@@ -37,21 +46,7 @@ Page({
             fail() {
                 console.log(`抱团列表API 调用失败`);
             }
-        })
-    },
-
-    /**
-     * 生命周期函数--监听页面初次渲染完成
-     */
-    onReady: function () {
-
-    },
-
-    /**
-     * 生命周期函数--监听页面显示
-     */
-    onShow: function () {
-
+        });
     },
 
     /**
