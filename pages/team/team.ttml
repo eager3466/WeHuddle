@@ -1,3 +1,4 @@
+<wxs src='./utils.wxs' module='tools'/>
 <!-- 搜索栏 -->
 <view class="cu-bar search bg-white fixed">
   <view class="search-form round">
@@ -11,23 +12,21 @@
 <!-- 列表 -->
 <!-- <scroll-view scroll-y > -->
 <view style="margin-top:50px;"></view>
-<view class="cu-list menu-avatar" style="margin: 5px;" wx:for={{10}}>
+<view class="cu-list menu-avatar" style="margin: 5px;" tt:for="{{teamlist}}" data-id="{{item.teamId}}" bindtap="showteam">
   <view class="cu-item cur">
-    <view class="cu-avatar round  lg"
-      style="background-image:url(https://ossweb-img.qq.com/images/lol/web201310/skin/big81020.jpg);">
+    <view class="cu-avatar round  lg" style="background-image:url({{item.teamCaptainImg}});">
     </view>
     <view class="content">
       <view>
-        <text class="text-cut">黑客马拉松缺前端</text>
-        <view class="cu-tag round bg-orange sm">黑客马拉松</view>
+        <text class="text-cut">{{item.teamTitle}}</text>
+        <view class="cu-tag round bg-orange sm" tt:if="{{item.teamActivityName != null}}" >{{item.teamActivityName}}</view>
       </view>
       <view class="text-gray text-sm flex">
-        <text class="text-cut"> 欢迎大家报名黑客马拉松欢迎大家报名黑客马拉松欢迎大家报名黑客马拉松<text
-            class="cuIcon-locationfill text-orange margin-right-xs"></text> 传送中...</text>
+        <text class="text-cut">{{item.teamDesc}}</text>
       </view>
     </view>
     <view class="action">
-      <view class="text-grey text-xs">22:20</view>
+      <view class="text-grey text-xs">{{tools.substring(item.teamCreateTime,5,10)}}</view>
       <view class="cuIcon-commentfill lg  text-gray"></view>
     </view>
   </view>

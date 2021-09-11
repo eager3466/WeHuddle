@@ -1,11 +1,11 @@
 App({
   globalData: {
-    "name": "",
-    "user_img": "",
-    "user_id": "",
-    "email": "",
-    'phone':'',
-    "ip": "http://10.220.46.153:8081/",
+    name: "",
+    user_img: "",
+    user_id: "",
+    email: "",
+    phone: '',
+    ip: "http://10.220.46.153:8081",
   },
   onLaunch: function () {
     // 可以通过 tt.getSetting 先查询一下用户是否授权了 "scope.record" 这个 scope
@@ -26,11 +26,11 @@ App({
           success(res) {
             let content = res.data.data;
             console.log(`request 调用成功 ${JSON.stringify(content)}`);
-            getApp().globalData.name=content.loginUserName
-            getApp().globalData.user_img=content.loginUserImg
-            getApp().globalData.user_id=content.loginName
-            getApp().globalData.email=content.loginUserEmail
-            getApp().globalData.phone=content.loginUserPhone
+            getApp().globalData.name = content.loginUserName;
+            getApp().globalData.user_img = content.loginUserImg;
+            getApp().globalData.user_id = content.loginName;
+            getApp().globalData.email = content.loginUserEmail;
+            getApp().globalData.phone = content.loginUserPhone;
           },
           fail() {
             console.log(`request 调用失败`);

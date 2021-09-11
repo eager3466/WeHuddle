@@ -8,8 +8,8 @@
   </view>
 </view>
 <!-- 轮播图 -->
-<swiper class="screen-swiper round-dot " indicator-dots="true" circular="true"
-  autoplay="true" interval="5000" duration="500" style="margin-top:50px;">
+<swiper class="screen-swiper round-dot " indicator-dots="true" circular="true" autoplay="true" interval="5000"
+  duration="500" style="margin-top:50px;">
   <swiper-item wx:for="{{swiperList}}" wx:key>
     <image src="{{item.url}}" mode="aspectFill" wx:if="{{item.type=='image'}}"></image>
     <video src="{{item.url}}" autoplay loop muted show-play-btn="{{false}}" controls="{{false}}" objectFit="cover"
@@ -17,11 +17,12 @@
   </swiper-item>
 </swiper>
 <!-- 菜单 -->
-<scroll-view scroll-x class="bg-orange nav text-center">
-  <view class="cu-item {{0==TabCur?'text-white cur':''}}" bindtap="tabSelect" data-id="1">
+<scroll-view scroll-x class="bg-orange nav text-center justify-around">
+  <view class="cu-item {{0==TabCur?'text-white cur':''}}" style="width: 50%;margin:0px;padding:0px;" bindtap="tabSelect"
+    data-id="0">
     <text class="cuIcon-camerafill"></text> 比赛活动
   </view>
-  <view class="cu-item {{1==TabCur?'text-white cur':''}}" bindtap="tabSelect" data-id="2">
+  <view class="cu-item {{1==TabCur?'text-white cur':''}}" style="width: 50%;margin:0px;padding:0px;"  bindtap="tabSelect" data-id="1">
     <text class="cuIcon-upstagefill"></text> 日常活动
   </view>
 </scroll-view>
@@ -47,22 +48,22 @@
 <view style="height:50px"></view>
 <!-- 底部栏 -->
 <view class="cu-bar tabbar bg-white shadow foot">
-    <view class="action">
-        <view class="cuIcon-cu-image" bindtap="activity">
-            <image src="/images/tabbar/basics_cur.png"></image>
-        </view>
-        <view class="text-orange">活动</view>
+  <view class="action">
+    <view class="cuIcon-cu-image" bindtap="activity">
+      <image src="/images/tabbar/basics_cur.png"></image>
     </view>
-    <view class="action" bindtap="team">
-        <view class="cuIcon-cu-image">
-            <image src="/images/tabbar/component.png"></image>
-        </view>
-        <view class="text-gray">抱团</view>
+    <view class="text-orange">活动</view>
+  </view>
+  <view class="action" bindtap="team">
+    <view class="cuIcon-cu-image">
+      <image src="/images/tabbar/component.png"></image>
     </view>
-    <view class="action">
-        <view class="cuIcon-cu-image" bindtap="me">
-            <image src="/images/tabbar/about.png"></image>
-        </view>
-        <view class="text-gray">我的</view>
+    <view class="text-gray">抱团</view>
+  </view>
+  <view class="action">
+    <view class="cuIcon-cu-image" bindtap="me">
+      <image src="/images/tabbar/about.png"></image>
     </view>
+    <view class="text-gray">我的</view>
+  </view>
 </view>
