@@ -18,10 +18,10 @@
 </swiper>
 <!-- 菜单 -->
 <scroll-view scroll-x class="bg-orange nav text-center">
-  <view class="cu-item {{0==TabCur?'text-white cur':''}}" bindtap="tabSelect" data-id="0">
+  <view class="cu-item {{0==TabCur?'text-white cur':''}}" bindtap="tabSelect" data-id="1">
     <text class="cuIcon-camerafill"></text> 比赛活动
   </view>
-  <view class="cu-item {{1==TabCur?'text-white cur':''}}" bindtap="tabSelect" data-id="1">
+  <view class="cu-item {{1==TabCur?'text-white cur':''}}" bindtap="tabSelect" data-id="2">
     <text class="cuIcon-upstagefill"></text> 日常活动
   </view>
 </scroll-view>

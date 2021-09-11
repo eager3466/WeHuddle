@@ -25,6 +25,7 @@ Page({
       url: '../../images/banner/4.jpg'
     }],
 
+    tabSelect: 1,
     activityList: [{
       activityId: 1,
       activityName: "第二届小米黑客马拉松",
@@ -101,7 +102,7 @@ Page({
     tt.request({
           url: `${ip}/activity/getActivityByType`,
           data: {
-            activityType: 1
+            activityType: that.data.tabSelect
           },
           header: {
             'content-type': 'application/json'
@@ -119,6 +120,16 @@ Page({
             console.log(`getList 调用失败`);
           }
         });
+  },
+
+  // 点击tab
+  tabSelect: function(event) {
+    let selected = event.currentTarget.dataset.id
+    this.setData({
+      tabSelect: selected
+    }, function() {
+      this.loadData()
+    })
   },
 
   // 点击活动
