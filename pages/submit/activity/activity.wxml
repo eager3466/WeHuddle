@@ -1,7 +1,11 @@
 <form catchsubmit="formSubmit" catchreset="formReset">
 	<view class="cu-form-group margin-top">
-		<view class="title">* 标题</view>
-		<input name="title" placeholder="填写你吸睛的队名"></input>
+		<view class="title">活动名称</view>
+		<input name="title" placeholder="名称名称呀"></input>
+	</view>
+	<view class="cu-form-group margin-top">
+		<view class="title">举办方</view>
+		<input name="organizers" placeholder="你是哪拨人"></input>
 	</view>
 	<view class="cu-form-group">
 		<view class="title">开始日期</view>
@@ -21,24 +25,39 @@
 		</picker>
 	</view>
 
-	<view class="cu-form-group margin-top">
-		<view class="title">所属活动</view>
-		<picker name="activity" bindchange="PickerChange" value="{{picker[index]}}" range="{{picker}}">
-			<view class="picker">
-				{{index?picker[index]:'无'}}
-			</view>
-		</picker>
-	</view>
-
 	<view class="cu-form-group">
 		<view class="title">报名上限</view>
 		<input placeholder="最大人数" name="max_people"></input>
 	</view>
-	<view class="cu-form-group margin-top">
-		<textarea name="description" maxlength="-1" disabled="{{modalName!=null}}" bindinput="textareaAInput" placeholder="抱团简介"></textarea>
+	<view class="cu-form-group">
+		<view class="title">官网链接</view>
+		<input placeholder="the link" name="website"></input>
 	</view>
-
-	<view class="cu-bar bg-white margin-top">
+	<view class="cu-form-group">
+		<view class="title">比赛地点</view>
+		<input placeholder="where" name="position"></input>
+	</view>
+	<view class="cu-form-group margin-top">
+		<textarea name="description" maxlength="-1" disabled="{{modalName!=null}}" bindinput="textareaAInput" placeholder="活动简介"></textarea>
+	</view>
+	<view class="cu-form-group">
+		<view class="title">是否为个人赛</view>
+		<view class="action">
+		<radio-group name="individual" bindchange="SetBorderSize" >
+		<label class="margin-left-sm">
+			<radio class="blue sm radio" value="false" checked></radio>
+			<text> 否</text>
+		</label>
+		<label class="margin-left-sm">
+			<radio class="blue sm radio" value="true"></radio>
+			<text> 是</text>
+		</label>
+		</radio-group>
+		</view>
+	</view>	
+	</view>
+	
+<view class="cu-bar bg-white margin-top">
 		<view class="action">
 			图片上传
 		</view>
@@ -60,7 +79,7 @@
 			</view>
 		</view>
 	</view>
-	
+
 	<view class="padding">
 		<button class="cu-btn block bg-blue margin-tb-sm lg" form-type="submit">提交</button>
 	</view>
