@@ -2,30 +2,25 @@
 	<image class="image" src="{{item.imageUrl}}" mode="scallToFill" ></image>
 
 	<view class="title">活动介绍</view>
-	<view class="content">{{item.description}}</view>
+	<view class="content">{{activity.activityDesc}}</view>
 
 	<view class='prop'>
         <text class='key'>主办方：</Text>
-        <text class='value'>{{item.sponsor}}</Text>
+        <text class='value'>{{activity.activityHost}}</Text>
     </view>
 
 	<view class='prop'>
         <text class='key'>活动期限：</Text>
-        <text class='value'>{{item.startDate}} 至 {{item.endDate}}</Text>
-    </view>
-
-	<view class='prop'>
-        <text class='key'>参赛要求：</Text>
-        <text class='value'>{{item.requirement}}</Text>
+        <text class='value'>{{activity.activityStartTime}} 至 {{activity.activityEndTime}}</Text>
     </view>
 
 	<view class='prop'>
         <text class='key'>活动官网：</Text>
-        <text class='value'>{{item.website}}</Text>
+        <text class='value'>{{activity.activityOfficialWebsite}}</Text>
     </view>
 
 	<view class="operation">
-        <button class='btn-join bg-orange' bindtap="signup">我要报名</button>
-        <button class='btn-join bg-orange' bindtap="group">我要参团</button>
+        <button class='btn-join bg-orange' bindtap="signup" wx:if="{{activity.activityRegistrationAddress!=null&&activity.activityRegistrationAddress!=''}}">我要报名</button>
+        <button class='btn-join bg-orange' bindtap="group" wx:if="{{activity.activityIsPersonal==1}}">我要参团</button>
 	</view>
 </view>

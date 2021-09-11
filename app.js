@@ -5,7 +5,7 @@ App({
     "user_id": "",
     "email": "",
     'phone':'',
-    "ip": "http://192.168.70.18:8081/",
+    "ip": "http://10.220.46.153:8081/",
   },
   onLaunch: function () {
     // 可以通过 tt.getSetting 先查询一下用户是否授权了 "scope.record" 这个 scope

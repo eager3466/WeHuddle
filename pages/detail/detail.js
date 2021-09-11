@@ -10,7 +10,47 @@ Page({
       requirement: "五人成团",
       website: "i.mi.com"
     },
+    activity: {}
   },
+  /**
+   * 生命周期函数--监听页面加载
+  */
+  onLoad: function (options) {
+    this.setData({
+      activityId: options.id
+    }, function() {
+      this.loadData()
+    })
+  },
+
+  /**
+   * 加载数据
+   */
+  loadData: function() {
+    let ip = app.globalData.ip
+    var that = this
+    tt.request({
+          url: `${ip}/activity/getActivityById`,
+          data: {
+            activityId: that.data.activityId
+          },
+          header: {
+            'content-type': 'application/json'
+          },
+          method: "POST",
+          success(res) {
+            let content = res.data.data;
+            that.setData({
+              activity: content
+            })
+            console.log(content)
+          },
+          fail() {
+            console.log(`getById 调用失败`);
+          }
+        });
+  },
+
   signup: function() {
   },
   group: function() {

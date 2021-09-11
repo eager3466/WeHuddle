@@ -31,3 +31,6 @@
   content: "\e6db";
 }
 
+.activity-time {
+  display: flex;
+}
