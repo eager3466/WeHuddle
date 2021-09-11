@@ -33,6 +33,10 @@
 </view>
 <view style="height:50px;"></view>
 <!-- </scroll-view> -->
+
+<!-- 发布 -->
+<text class="floating shadow-blur" bindtap="publish"></text>
+
 <!-- 底部栏 -->
 <view class="cu-bar tabbar bg-white shadow foot">
   <view class="action">

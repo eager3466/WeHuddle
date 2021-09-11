@@ -26,6 +26,10 @@
     <text class="cuIcon-upstagefill"></text> 日常活动
   </view>
 </scroll-view>
+
+<!-- 发布 -->
+<text class="floating shadow-blur" bindtap="publish"></text>
+
 <!-- 活动列表 -->
 <view class="cu-card article {{isCard?'no-card':''}}" wx:for={{activityList}}>
   <view class="cu-item shadow" style="margin: 5px" data-id={{item.activityId}} bindtap="viewDetail">
@@ -46,6 +50,7 @@
   </view>
 </view>
 <view style="height:50px"></view>
+
 <!-- 底部栏 -->
 <view class="cu-bar tabbar bg-white shadow foot">
   <view class="action">

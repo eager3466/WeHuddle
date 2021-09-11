@@ -96,6 +96,12 @@ Page({
             url: '/pages/team/team',
         })
     },
+    // 点击发布
+    publish: function() {
+        wx.navigateTo({
+            url: '/pages/submit/team/team'
+        })
+    },
     //点击我的
     me: function () {
         wx.redirectTo({

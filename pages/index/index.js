@@ -40,7 +40,7 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-    this.loadData()
+    // this.loadData()
   },
 
   /**
@@ -129,6 +129,12 @@ Page({
   activity: function () {
     wx.redirectTo({
       url: '/pages/index/index',
+    })
+  },
+  // 点击发布
+  publish: function() {
+    wx.navigateTo({
+      url: '/pages/submit/activity/activity'
     })
   },
   // 点击抱团

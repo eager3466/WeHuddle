@@ -4,7 +4,9 @@
     "pages/team/team",
     "pages/me/me",
     "pages/team_detail/team_detail",
-    "pages/detail/detail"
+    "pages/detail/detail",
+    "pages/submit/activity/activity",
+    "pages/submit/team/team"
   ],
   "window":{
     "backgroundTextStyle":"light",
