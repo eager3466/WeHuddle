@@ -15,7 +15,7 @@ Page({
     onLoad: function (options) {
         console.log(options)
         this.setData({
-            searchStr: options.title
+            searchStr: options.title==undefined?"":options.title
         })
     },
 
