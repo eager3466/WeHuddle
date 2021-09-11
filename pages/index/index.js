@@ -26,7 +26,7 @@ Page({
     }],
 
     tabSelect: 1,
-    activityList:[],
+    activityList: [],
   },
 
   /**
@@ -87,39 +87,39 @@ Page({
   /**
    * 加载数据
    */
-  loadData: function() {
+  loadData: function () {
     let ip = app.globalData.ip
     var that = this
     console.log(that.data.tabSelect)
     tt.request({
-          url: `${ip}/activity/getActivityByType`,
-          data: {
-            activityType: that.data.tabSelect
-          },
-          header: {
-            'content-type': 'application/json'
-          },
-          method: "POST",
-          success(res) {
-            let content = res.data.data;
-            // let list = JSON.stringify(content);
-            console.log(content)
-            that.setData({
-              activityList: content
-            })
-          },
-          fail() {
-            console.log(`getList 调用失败`);
-          }
-        });
+      url: `${ip}/activity/getActivityByType`,
+      data: {
+        activityType: that.data.tabSelect
+      },
+      header: {
+        'content-type': 'application/json'
+      },
+      method: "POST",
+      success(res) {
+        let content = res.data.data;
+        // let list = JSON.stringify(content);
+        console.log(content)
+        that.setData({
+          activityList: content
+        })
+      },
+      fail() {
+        console.log(`getList 调用失败`);
+      }
+    });
   },
 
   // 点击tab
-  tabSelect: function(event) {
+  tabSelect: function (event) {
     let selected = event.currentTarget.dataset.id
     this.setData({
       tabSelect: selected
-    }, function() {
+    }, function () {
       this.loadData()
     })
   },
@@ -131,13 +131,13 @@ Page({
     })
   },
   // 点击发布
-  publish: function() {
+  publish: function () {
     wx.navigateTo({
       url: '/pages/submit/activity/activity'
     })
   },
   // 点击抱团
-  team: function() {
+  team: function () {
     wx.redirectTo({
       url: '/pages/team/team',
     })
@@ -149,7 +149,7 @@ Page({
     })
   },
   // 详情
-  viewDetail: function(event) {
+  viewDetail: function (event) {
     let id = event.currentTarget.dataset.id
     wx.navigateTo({
       url: '/pages/detail/detail?id=' + id

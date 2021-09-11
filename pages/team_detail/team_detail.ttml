@@ -16,13 +16,13 @@
       {{content}}
     </view>
     <view class="grid flex-sub padding-lr col-1" tt:if="{{teamImg != null}}">
-      <view class="bg-img only-img" style="background-image:url({{teamImg}});">
+      <view class="bg-img only-img" wx:if="{{teamImg != ''}}" style="background-image:url({{teamImg}});">
       </view>
       <!-- 队友 -->
     </view>
     <view class="text-gray text-sm text-right padding">
       <view class="cu-avatar-group ">
-        <view class="cu-avatar round " wx:for="{{imglist}}" style="background-image:url({{item.loginUserImg}});">
+        <view class="cu-avatar round "  wx:for="{{imglist}}" style="background-image:url({{item.loginUserImg}});">
         </view>
       </view>
       <view>

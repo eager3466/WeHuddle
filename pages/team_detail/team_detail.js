@@ -16,12 +16,12 @@ Page({
         maxpeople: '',
         sendtext: '',
         display: ['', 'none'],
-        textareaText:'',
-        say:[{
-            img:'https://s1-imfile.feishucdn.com/static-resource/v1/a1a21bf2-ae7c-4f5d-895b-f4a69c37e3dg~?image_size=72x72&cut_type=&quality=&format=image&sticker_format=.webp',
-            name:'徐明东',
-            text:'我也好像加入',
-            time:'2021年9月10日'
+        textareaText: '',
+        say: [{
+            img: 'https://s1-imfile.feishucdn.com/static-resource/v1/a1a21bf2-ae7c-4f5d-895b-f4a69c37e3dg~?image_size=72x72&cut_type=&quality=&format=image&sticker_format=.webp',
+            name: '徐明东',
+            text: '我也好像加入',
+            time: '2021年9月10日'
         }]
     },
     isCard(e) {
@@ -119,7 +119,7 @@ Page({
                 for (let i = 0; i < data.users.length; i++) {
                     if (app.globalData.user_id == data.users[i].loginName) {
                         that.setData({
-                            display:['none',''],
+                            display: ['none', ''],
                         })
                     }
                 }
@@ -132,9 +132,24 @@ Page({
     },
 
     showModal(e) {
-        this.setData({
-            modalName: e.currentTarget.dataset.target
-        })
+        var that=this
+        tt.showPrompt({
+            title: '原因',
+            success(res) {
+                if (res.confirm) {
+                    console.log('confirm and inputValue is: ' + res.inputValue);
+                    that.send(res.inputValue);
+                } else if (res.cancel) {
+                    console.log('cancel')
+                }
+            },
+            fail(res) {
+                console.log(`showPrompt调用失败`);
+            }
+        });
+        // this.setData({
+        //     modalName: e.currentTarget.dataset.target
+        // })
     },
     hideModal(e) {
         this.setData({
@@ -163,13 +178,13 @@ Page({
     },
     send: function (e) {
         var that = this
-        console.log("申请内容：" + that.data.sendtext)
+        console.log("申请内容：" + e)
         tt.request({
             url: `${app.globalData.ip}/registration/addRegistration?code=${app.globalData.user_id}`,
             data: {
                 'teamId': that.team_id,
                 'userName': app.globalData.user_id,
-                'applyReason': that.data.sendtext,
+                'applyReason': e,
             },
             header: {
                 'content-type': 'application/json'
@@ -185,7 +200,7 @@ Page({
                     mask: true
                 })
                 that.setData({
-                    textareaText:'',
+                    textareaText: '',
                 })
             },
             fail(res) {

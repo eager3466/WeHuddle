@@ -127,7 +127,6 @@ Page({
     getActivity: function () {
         let ip = app.globalData.ip
         var that = this
-        console.log(that.data.tabSelect)
         tt.request({
             url: `${ip}/activity/getAllActivity?code=${app.globalData.user_id}`,
             data: {
@@ -138,7 +137,7 @@ Page({
             },
             method: "POST",
             success(res) {
-                let content = res.data;
+                let content = res.data.data;
                 // let list = JSON.stringify(content);
                 console.log(content)
                 that.setData({
@@ -150,4 +149,11 @@ Page({
             }
         });
     },
+    //跳转到详细
+    viewDetail: function (event) {
+        let id = event.currentTarget.dataset.id
+        wx.navigateTo({
+            url: '/pages/detail/detail?id=' + id
+        })
+    }
 });
