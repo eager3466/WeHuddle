@@ -54,5 +54,8 @@ Page({
   signup: function() {
   },
   group: function() {
+    wx.redirectTo({
+      url: '/pages/team/team?title=' + this.data.activity.activityName
+    })
   }
 })

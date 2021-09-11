@@ -17,7 +17,7 @@ Page({
         tt.request({
             url: `${app.globalData.ip}/team/getAllTeam?code=${app.globalData.user_id}`,
             data: {
-                'teamTitle': '',
+                'teamTitle': options.title,
             },
             header: {
                 'content-type': 'application/json'
