@@ -13,7 +13,10 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
-        
+        console.log(options)
+        this.setData({
+            searchStr: options.title
+        })
     },
 
     /**
@@ -31,7 +34,7 @@ Page({
         tt.request({
             url: `${app.globalData.ip}/team/getAllTeam?code=${app.globalData.user_id}`,
             data: {
-                'teamTitle': '',
+                'teamTitle': that.data.searchStr,
             },
             header: {
                 'content-type': 'application/json'
